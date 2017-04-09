@@ -78,6 +78,6 @@ $RECYCLE.BIN/
 
 # My added ignores!
 DeletableJunk/
-ExecutableNonJunk/
 *.sdf
-*.suo
+*.ilk
+*.pdb
