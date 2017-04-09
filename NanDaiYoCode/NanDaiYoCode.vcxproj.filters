@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="UI Elements">
+      <UniqueIdentifier>{c0d7bd8c-f4f9-4828-a713-6fb673738698}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{dfb11936-7f74-45e9-8fdd-1e83dc92365f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{1c69cedc-5506-459e-b00b-2fdeee481080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{c2f09afa-31b7-403c-bdda-ed813a802d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XML Files">
+      <UniqueIdentifier>{527cd949-b799-4a56-a339-03eda180dedb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Elements\Abstract">
+      <UniqueIdentifier>{e9d96d9b-7e3e-402e-890b-85d7d2c4e508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Abstract">
+      <UniqueIdentifier>{e5d3309e-2ef3-474c-9d11-be3240613701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SceneManager">
+      <UniqueIdentifier>{5a5bb18d-2336-409e-9abe-2445f6a7d577}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomResource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="UIImage.cpp">
+      <Filter>UI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPosition.cpp">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="UIObject.cpp">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>UI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="UITexture.cpp">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="UITextureAnimator.cpp">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="UITextureAnimationInfo.cpp">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="UIProgrammedAnimation.cpp">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Screens\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Managers\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Transitioner.cpp">
+      <Filter>Managers\SceneManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RandomResource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="UIImage.h">
+      <Filter>UI Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="UIPosition.h">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="UIObject.h">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAnchorEnum.h">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.h">
+      <Filter>UI Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="StringValidator.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="UITexture.h">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectoryNavigator.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="UITextureAnimator.h">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="UITextureAnimationInfo.h">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="UIProgrammedAnimation.h">
+      <Filter>UI Elements\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Screens\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Managers\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Transitioner.h">
+      <Filter>Managers\SceneManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
