@@ -37,7 +37,7 @@ private:
 	SceneManager(SceneManager const&);
 	void operator=(SceneManager const&);
 
-	std::vector<std::shared_ptr<Scene>> m_AllScenes; // Does automatic pointer cleanup if I clear the vector, needs to be shared so I can pass it to Transitioner and delete it from here without losing it but still letting it delete itself
+	std::vector<std::shared_ptr<Scene>> m_AllScenes;
 	Transitioner m_Transitioner;
 
 	//std::vector<Scene*> m_DrawableScenes; // May need to be a func? GetDrawableSceneList()?

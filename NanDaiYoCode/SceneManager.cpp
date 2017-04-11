@@ -9,14 +9,14 @@ SceneManager& SceneManager::getInstance()
 
 void SceneManager::pushScreen(Scene* pScene)
 {
-	m_AllScenes.push_back(std::unique_ptr<Scene>(pScene));
-	m_Transitioner.startTransition(Instant(), m_AllScenes.at(m_AllScenes.size() - 2).get(), m_AllScenes.back().get());
+	m_AllScenes.push_back(std::shared_ptr<Scene>(pScene));
+	m_Transitioner.startTransition(Instant(), m_AllScenes.at(m_AllScenes.size() - 2), m_AllScenes.back());
 }
 
 void SceneManager::pushScreen(Scene* pScene, FadeColour fadeColour)
 {
-	m_AllScenes.push_back(std::unique_ptr<Scene>(pScene));
-	m_Transitioner.startTransition(fadeColour, m_AllScenes.at(m_AllScenes.size() - 2).get(), m_AllScenes.back().get());
+	m_AllScenes.push_back(std::shared_ptr<Scene>(pScene));
+	m_Transitioner.startTransition(fadeColour, m_AllScenes.at(m_AllScenes.size() - 2), m_AllScenes.back());
 }
 
 void SceneManager::clearAndAddScreen(Scene* pScene)
@@ -32,6 +32,8 @@ void SceneManager::popScreen()
 
 void SceneManager::popScreen(FadeColour fadeColour)
 {
+	m_Transitioner.startTransition(fadeColour, m_AllScenes.back(), m_AllScenes.at(m_AllScenes.size() - 2));
+	m_AllScenes.pop_back();
 }
 
 void SceneManager::handleEvents(const sf::Event& event)
@@ -49,7 +51,7 @@ void SceneManager::update(float fFrameChunk)
 	{
 		m_Transitioner.update(fFrameChunk);
 	}
-	else // Could just leave the scenes to be updating... Or handle which scene is updating witin m_Transitioner
+	else
 	{
 		// May need some null checking...
 		m_AllScenes.back()->update(fFrameChunk);

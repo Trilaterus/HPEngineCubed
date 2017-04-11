@@ -13,6 +13,14 @@ class Instant
 {
 public:
 	Instant();
+	void setScenes(std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
+
+	bool update(float fFrameChunk);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+private:
+	std::shared_ptr<Scene> m_prevScene;
+	std::shared_ptr<Scene> m_nextScene;
 };
 
 /* FadeColour */
@@ -22,7 +30,7 @@ class FadeColour : public sf::Drawable
 public:
 	FadeColour();
 	FadeColour(float fFullDuration, sf::Color color = sf::Color::Black); // Defaults to fade to black
-	void setScenes(Scene* prevScene, Scene* nextScene);
+	void setScenes(std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
 
 	bool update(float fFrameChunk);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -31,8 +39,8 @@ private:
 	float m_fDuration;
 	sf::Color m_Colour;
 	float m_fTotalChunks;
-	Scene* m_prevScene;
-	Scene* m_nextScene;
+	std::shared_ptr<Scene> m_prevScene;
+	std::shared_ptr<Scene> m_nextScene;
 	//SinMovement m_SinMovement; // Maybe add in at some point
 };
 
@@ -58,8 +66,8 @@ class Transitioner : public sf::Drawable
 public:
 	Transitioner();
 
-	void startTransition(Instant instant, Scene* prevScene, Scene* nextScene);
-	void startTransition(FadeColour fadeColour, Scene* prevScene, Scene* nextScene);
+	void startTransition(Instant instant, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
+	void startTransition(FadeColour fadeColour, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
 
 	bool isTransitioning() const;
 
@@ -80,9 +88,4 @@ private:
 	Instant m_InstantTransition;
 	FadeColour m_FadeColourTransition;
 	Swipe m_SwipeTransition;
-
-	Scene* m_prevScene;
-	Scene* m_nextScene;
-
-	void startTransition(Scene* prevScene, Scene* nextScene);
 };

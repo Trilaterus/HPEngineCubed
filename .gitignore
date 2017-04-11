@@ -81,3 +81,7 @@ DeletableJunk/
 *.sdf
 *.ilk
 *.pdb
+*.iobj
+*.ipdb
+*.opendb
+.vs/NanDaiYoCode/v14/.suo
