@@ -11,5 +11,5 @@ The first game planned is a Point and Click adventure/puzzle game, some of the f
 - Properly anchored UI elements to allow for support on multiple screen sizes
 - A semi-stack like Screen system to efficiently change screens with transitions (and have overlays within screens!)
 - Animations handled via both spritesheets and programmable movements (sin movement, shake movement etc.)
-- UIElements working: UIImage, UIButton, UIButtonList (names subject to change)
+- UIElements working: UIImage, UIButton, UIButtonList, UIText (names subject to change)
 - Basic audio manipulation... Having BG music and SFX implemented without memory leaks (using smart pointers probably!)
