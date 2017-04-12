@@ -10,9 +10,22 @@ OptionsScreen::OptionsScreen(const sf::RenderWindow& window)
 {
 	m_isOverlay = false; // Can't call this in the ':' bit of the constructor for some reason...
 
+	UIImage scottLeft = UIImage("newSpriteSheet", m_Window, UIPosition(UIAnchor::LEFT, 400.f));
+	scottLeft.setTextureAnimationSpeed(8);
+
 	UIImage scott = UIImage("newSpriteSheet", m_Window, UIPosition());
 	scott.setTextureAnimationSpeed(8);
+	scott.setTextureAnimation("Run");
+
+	UIImage scottRight = UIImage("newSpriteSheet", m_Window, UIPosition(UIAnchor::RIGHT, -400.f));
+	scottRight.setTextureAnimationSpeed(8);
+	scottRight.setTextureAnimation("Run");
+	scottRight.chooseProgrammedAnimation().setSinMovement(SinMovement(0.f, 0.f, 30.f, 1.f));
+	scottRight.chooseProgrammedAnimation().setShakeMovement(ShakeMovement(10, 8.f));
+
+	m_AllUI.push_back(std::make_shared<UIImage>(scottLeft));
 	m_AllUI.push_back(std::make_shared<UIImage>(scott));
+	m_AllUI.push_back(std::make_shared<UIImage>(scottRight));
 }
 
 void OptionsScreen::handleEvents(const sf::Event& event)

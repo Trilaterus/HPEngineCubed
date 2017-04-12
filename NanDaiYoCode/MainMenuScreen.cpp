@@ -11,7 +11,14 @@ MainMenuScreen::MainMenuScreen(const sf::RenderWindow& window)
 	m_isOverlay = false; // Can't call this in the ':' bit of the constructor for some reason...
 
 	UIImage logo = UIImage("logo_shadow", m_Window, UIPosition());
+	UIImage logoLeft = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::LEFT));
+	UIImage logoTopRight = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::RIGHT | UIAnchor::TOP));
+	UIImage logoBotLeftCentre = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, UIAnchor::CENTRE));
+
 	m_AllUI.push_back(std::make_shared<UIImage>(logo));
+	m_AllUI.push_back(std::make_shared<UIImage>(logoLeft));
+	m_AllUI.push_back(std::make_shared<UIImage>(logoTopRight));
+	m_AllUI.push_back(std::make_shared<UIImage>(logoBotLeftCentre));
 }
 
 void MainMenuScreen::handleEvents(const sf::Event& event)
