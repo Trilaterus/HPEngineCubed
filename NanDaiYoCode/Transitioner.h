@@ -7,22 +7,6 @@ including things like the sprites needed, the timings etc
 
 #include "Scene.h"
 
-/* Instant */
-
-class Instant
-{
-public:
-	Instant();
-	void setScenes(std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
-
-	bool update(float fFrameChunk);
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-private:
-	std::shared_ptr<Scene> m_prevScene;
-	std::shared_ptr<Scene> m_nextScene;
-};
-
 /* FadeColour */
 
 class FadeColour : public sf::Drawable
@@ -66,7 +50,6 @@ class Transitioner : public sf::Drawable
 public:
 	Transitioner();
 
-	void startTransition(Instant instant, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
 	void startTransition(FadeColour fadeColour, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
 
 	bool isTransitioning() const;
@@ -79,13 +62,11 @@ private:
 	
 	enum Transition
 	{
-		INSTANT,
 		FADECOLOUR,
 		SWIPE
 	};
 
 	Transition m_TransitionType;
-	Instant m_InstantTransition;
 	FadeColour m_FadeColourTransition;
 	Swipe m_SwipeTransition;
 };

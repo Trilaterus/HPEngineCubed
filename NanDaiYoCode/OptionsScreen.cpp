@@ -20,7 +20,6 @@ void OptionsScreen::handleEvents(const sf::Event& event)
 	if (event.type == event.KeyPressed &&
 		event.key.code == sf::Keyboard::Right)
 	{
-		//SceneManager::getInstance().pushScreen(new MainMenuScreen(m_Window), FadeColour());
 		SceneManager::getInstance().popScreen(FadeColour());
 	}
 }

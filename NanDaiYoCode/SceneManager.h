@@ -21,7 +21,7 @@ public:
 	void pushScreen(Scene* pScene, FadeColour fadeColour);
 
 	void clearAndAddScreen(Scene* pScene);
-
+	void clearAndAddScreen(Scene* pScene, FadeColour fadeColour);
 
 	void popScreen();
 	void popScreen(FadeColour fadeColour);

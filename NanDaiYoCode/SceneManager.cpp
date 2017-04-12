@@ -10,7 +10,6 @@ SceneManager& SceneManager::getInstance()
 void SceneManager::pushScreen(Scene* pScene)
 {
 	m_AllScenes.push_back(std::shared_ptr<Scene>(pScene));
-	m_Transitioner.startTransition(Instant(), m_AllScenes.at(m_AllScenes.size() - 2), m_AllScenes.back());
 }
 
 void SceneManager::pushScreen(Scene* pScene, FadeColour fadeColour)
@@ -22,7 +21,15 @@ void SceneManager::pushScreen(Scene* pScene, FadeColour fadeColour)
 void SceneManager::clearAndAddScreen(Scene* pScene)
 {
 	m_AllScenes.clear();
-	m_AllScenes.push_back(std::unique_ptr<Scene>(pScene));
+	m_AllScenes.push_back(std::shared_ptr<Scene>(pScene));
+}
+
+void SceneManager::clearAndAddScreen(Scene* pScene, FadeColour fadeColour)
+{
+	std::shared_ptr<Scene> nextScene(pScene);
+	m_Transitioner.startTransition(fadeColour, m_AllScenes.back(), nextScene);
+	m_AllScenes.clear();
+	m_AllScenes.push_back(nextScene);
 }
 
 void SceneManager::popScreen()

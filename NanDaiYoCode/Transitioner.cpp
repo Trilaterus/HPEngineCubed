@@ -6,14 +6,6 @@ Transitioner::Transitioner()
 {
 }
 
-void Transitioner::startTransition(Instant instant, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene)
-{
-	m_TransitionType = Transition::INSTANT;
-	m_InstantTransition = instant;
-	m_InstantTransition.setScenes(prevScene, nextScene);
-	m_isTransitioning = true;
-}
-
 void Transitioner::startTransition(FadeColour fadeColour, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene)
 {
 	m_TransitionType = Transition::FADECOLOUR;
@@ -33,10 +25,6 @@ void Transitioner::update(float fFrameChunk)
 	{
 		switch (m_TransitionType)
 		{
-		case Transition::INSTANT:
-			m_isTransitioning = m_InstantTransition.update(fFrameChunk);
-			break;
-
 		case Transition::FADECOLOUR:
 			m_isTransitioning = m_FadeColourTransition.update(fFrameChunk);
 			break;
@@ -51,10 +39,6 @@ void Transitioner::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	switch (m_TransitionType)
 	{
-	case Transition::INSTANT:
-		m_InstantTransition.draw(target, states);
-		break;
-
 	case Transition::FADECOLOUR:
 		m_FadeColourTransition.draw(target, states);
 		break;
@@ -122,30 +106,6 @@ void FadeColour::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	}
 	
 	target.draw(shape);
-}
-
-/* Instant */
-
-Instant::Instant()
-{
-}
-
-void Instant::setScenes(std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene)
-{
-	m_prevScene = prevScene;
-	m_nextScene = nextScene;
-}
-
-bool Instant::update(float fFrameChunk)
-{
-	m_prevScene.reset();
-	m_nextScene.reset();
-	return false; // Finished transitioning
-}
-
-void Instant::draw(sf::RenderTarget & target, sf::RenderStates states) const
-{
-	m_nextScene->draw(target, states);
 }
 
 /* Swipe */
