@@ -1,11 +1,16 @@
+/*
+Test overlay with no real purpose other
+than to demonstrate an overlay working.
+*/
+
 #pragma once
 
 #include "Scene.h"
 
-class MainMenuScreen : public Scene
+class TestOverlay : public Scene
 {
 public:
-	MainMenuScreen(const sf::RenderWindow& window);
+	TestOverlay(const sf::RenderWindow& window);
 
 	void handleEvents(const sf::Event& event);
 	void update(float fFrameChunk);

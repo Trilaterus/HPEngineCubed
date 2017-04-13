@@ -14,20 +14,38 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{1c69cedc-5506-459e-b00b-2fdeee481080}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Screens">
-      <UniqueIdentifier>{c2f09afa-31b7-403c-bdda-ed813a802d18}</UniqueIdentifier>
-    </Filter>
     <Filter Include="XML Files">
       <UniqueIdentifier>{527cd949-b799-4a56-a339-03eda180dedb}</UniqueIdentifier>
     </Filter>
     <Filter Include="UI Elements\Abstract">
       <UniqueIdentifier>{e9d96d9b-7e3e-402e-890b-85d7d2c4e508}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Screens\Abstract">
-      <UniqueIdentifier>{e5d3309e-2ef3-474c-9d11-be3240613701}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Managers\SceneManager">
       <UniqueIdentifier>{5a5bb18d-2336-409e-9abe-2445f6a7d577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{c2f09afa-31b7-403c-bdda-ed813a802d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Abstract">
+      <UniqueIdentifier>{e5d3309e-2ef3-474c-9d11-be3240613701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Screens">
+      <UniqueIdentifier>{296923e7-5bbe-4001-b40a-963099d9906b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Overlays">
+      <UniqueIdentifier>{5e35bb53-4794-4dbb-9d2a-751b96eab522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SceneManager\Transitions">
+      <UniqueIdentifier>{acf906a8-4fba-44a7-95f8-88eca2897c2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SceneManager\Transitions\Abstract">
+      <UniqueIdentifier>{f1270aea-97fe-4255-8006-f7c4b78ef9c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SceneManager\Transitions\ScreenTransitions">
+      <UniqueIdentifier>{aeaf2bc7-f11f-4a87-8755-75bfc06f7e04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\SceneManager\Transitions\OverlayTransitions">
+      <UniqueIdentifier>{ecfdfdda-1247-4c70-a564-46df665f18d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -68,19 +86,28 @@
       <Filter>UI Elements\Abstract</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Screens\Abstract</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenuScreen.cpp">
-      <Filter>Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionsScreen.cpp">
-      <Filter>Screens</Filter>
+      <Filter>Scenes\Abstract</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Managers\SceneManager</Filter>
     </ClCompile>
     <ClCompile Include="Transitioner.cpp">
       <Filter>Managers\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Scenes\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsScreen.cpp">
+      <Filter>Scenes\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="TestOverlay.cpp">
+      <Filter>Scenes\Overlays</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTransition.cpp">
+      <Filter>Managers\SceneManager\Transitions\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeColour.cpp">
+      <Filter>Managers\SceneManager\Transitions\ScreenTransitions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,19 +157,34 @@
       <Filter>UI Elements\Abstract</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Screens\Abstract</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenuScreen.h">
-      <Filter>Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionsScreen.h">
-      <Filter>Screens</Filter>
+      <Filter>Scenes\Abstract</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Managers\SceneManager</Filter>
     </ClInclude>
     <ClInclude Include="Transitioner.h">
       <Filter>Managers\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Scenes\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsScreen.h">
+      <Filter>Scenes\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="TestOverlay.h">
+      <Filter>Scenes\Overlays</Filter>
+    </ClInclude>
+    <ClInclude Include="OverlayTransition.h">
+      <Filter>Managers\SceneManager\Transitions\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTransition.h">
+      <Filter>Managers\SceneManager\Transitions\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenTransition.h">
+      <Filter>Managers\SceneManager\Transitions\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeColour.h">
+      <Filter>Managers\SceneManager\Transitions\ScreenTransitions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

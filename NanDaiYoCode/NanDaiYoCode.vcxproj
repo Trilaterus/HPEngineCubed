@@ -155,10 +155,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FadeColour.cpp" />
     <ClCompile Include="OptionsScreen.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SceneTransition.cpp" />
+    <ClCompile Include="TestOverlay.cpp" />
     <ClCompile Include="Transitioner.cpp" />
     <ClCompile Include="UIProgrammedAnimation.cpp" />
     <ClCompile Include="UITextureAnimationInfo.cpp" />
@@ -176,12 +179,17 @@
   <ItemGroup>
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="DirectoryNavigator.h" />
+    <ClInclude Include="FadeColour.h" />
     <ClInclude Include="OptionsScreen.h" />
+    <ClInclude Include="OverlayTransition.h" />
     <ClInclude Include="RandomResource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneTransition.h" />
+    <ClInclude Include="ScreenTransition.h" />
     <ClInclude Include="StringValidator.h" />
+    <ClInclude Include="TestOverlay.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Transitioner.h" />

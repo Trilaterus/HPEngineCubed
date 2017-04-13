@@ -6,51 +6,14 @@ including things like the sprites needed, the timings etc
 #pragma once
 
 #include "Scene.h"
-
-/* FadeColour */
-
-class FadeColour : public sf::Drawable
-{
-public:
-	FadeColour();
-	FadeColour(float fFullDuration, sf::Color color = sf::Color::Black); // Defaults to fade to black
-	void setScenes(std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
-
-	bool update(float fFrameChunk);
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-private:
-	float m_fDuration;
-	sf::Color m_Colour;
-	float m_fTotalChunks;
-	std::shared_ptr<Scene> m_prevScene;
-	std::shared_ptr<Scene> m_nextScene;
-	//SinMovement m_SinMovement; // Maybe add in at some point
-};
-
-/* Swipe */
-
-class Swipe : public sf::Drawable // Do this later
-{
-public:
-	Swipe();
-
-	bool update(float fFrameChunk);
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-
-private:
-	float m_fDuration;
-	//enum Direction { up, down, left, right };
-};
-
-/* Transitioner */
+#include "SceneTransition.h"
 
 class Transitioner : public sf::Drawable
 {
 public:
 	Transitioner();
 
-	void startTransition(FadeColour fadeColour, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
+	void startTransition(SceneTransition* transition, std::shared_ptr<Scene> prevScene, std::shared_ptr<Scene> nextScene);
 
 	bool isTransitioning() const;
 
@@ -59,14 +22,6 @@ public:
 
 private:
 	bool m_isTransitioning;
-	
-	enum Transition
-	{
-		FADECOLOUR,
-		SWIPE
-	};
 
-	Transition m_TransitionType;
-	FadeColour m_FadeColourTransition;
-	Swipe m_SwipeTransition;
+	std::unique_ptr<SceneTransition> m_currentTransition;
 };

@@ -3,6 +3,7 @@
 #include "UIImage.h"
 #include "OptionsScreen.h"
 #include "SceneManager.h"
+#include "FadeColour.h"
 
 MainMenuScreen::MainMenuScreen(const sf::RenderWindow& window)
 	:
@@ -26,7 +27,7 @@ void MainMenuScreen::handleEvents(const sf::Event& event)
 	if (event.type == event.KeyPressed &&
 		event.key.code == sf::Keyboard::Left)
 	{
-		SceneManager::getInstance().pushScreen(new OptionsScreen(m_Window), FadeColour());
+		SceneManager::getInstance().pushScreen(new OptionsScreen(m_Window), new FadeColour());
 	}
 }
 
