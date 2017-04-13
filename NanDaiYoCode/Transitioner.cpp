@@ -25,7 +25,7 @@ void Transitioner::update(float fFrameChunk)
 	if (m_isTransitioning)
 	{
 		m_isTransitioning = m_currentTransition->update(fFrameChunk);
-		m_currentTransition.release(); // delete transition once it's done (unneeded?)
+		// Don't release transition memory as it still needs to draw
 	}
 }
 

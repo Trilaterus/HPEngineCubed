@@ -186,5 +186,8 @@
     <ClInclude Include="FadeColour.h">
       <Filter>Managers\SceneManager\Transitions\ScreenTransitions</Filter>
     </ClInclude>
+    <ClInclude Include="Maths.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

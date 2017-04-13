@@ -180,6 +180,7 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="DirectoryNavigator.h" />
     <ClInclude Include="FadeColour.h" />
+    <ClInclude Include="Maths.h" />
     <ClInclude Include="OptionsScreen.h" />
     <ClInclude Include="OverlayTransition.h" />
     <ClInclude Include="RandomResource.h" />
