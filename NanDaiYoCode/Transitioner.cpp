@@ -31,5 +31,5 @@ void Transitioner::update(float fFrameChunk)
 
 void Transitioner::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	m_currentTransition->draw(target, states);
+	target.draw(*m_currentTransition);
 }

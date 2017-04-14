@@ -42,11 +42,11 @@ void FadeColour::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	if (m_fTotalChunks < (m_fDuration / 2.f))
 	{
-		m_prevScene->draw(target, states);
+		target.draw(*m_prevScene);
 	}
 	else
 	{
-		m_nextScene->draw(target, states);
+		target.draw(*m_nextScene);
 	}
 
 	target.draw(shape);
