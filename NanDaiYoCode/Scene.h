@@ -22,6 +22,8 @@ class Scene : public sf::Drawable
 public:
 	Scene(const sf::RenderWindow& window);
 
+	bool isOverlay() const;
+
 	virtual void handleEvents(const sf::Event& event) = 0;
 	virtual void update(float fFrameChunk);	
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

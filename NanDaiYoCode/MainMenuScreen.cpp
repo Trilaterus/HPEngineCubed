@@ -4,6 +4,7 @@
 #include "OptionsScreen.h"
 #include "SceneManager.h"
 #include "FadeColour.h"
+#include "TestOverlay.h"
 
 MainMenuScreen::MainMenuScreen(const sf::RenderWindow& window)
 	:
@@ -28,6 +29,12 @@ void MainMenuScreen::handleEvents(const sf::Event& event)
 		event.key.code == sf::Keyboard::Left)
 	{
 		SceneManager::getInstance().pushScreen(new OptionsScreen(m_Window), new FadeColour());
+	}
+
+	if (event.type == event.KeyPressed &&
+		event.key.code == sf::Keyboard::Up)
+	{
+		SceneManager::getInstance().pushOverlay(new TestOverlay(m_Window));
 	}
 }
 

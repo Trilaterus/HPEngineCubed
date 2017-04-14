@@ -25,14 +25,10 @@ public:
 	void clearAndAddScreen(Scene* pScene);
 	void clearAndAddScreen(Scene* pScene, ScreenTransition* transition);
 
-	void popScreen();
+	void popScene(); // Use this for all Overalys and Instant Screen
 	void popScreen(ScreenTransition* transition);
 
-	void pushOverlay();
-	void pushOverlay(OverlayTransition* transition);
-
-	void popOverlay();
-	void popOverlay(OverlayTransition* transition);
+	void pushOverlay(Scene* pScene);
 
 	void handleEvents(const sf::Event& event);
 	void update(float fFrameChunk);
@@ -46,5 +42,5 @@ private:
 	std::vector<std::shared_ptr<Scene>> m_AllScenes;
 	Transitioner m_Transitioner;
 
-	//std::vector<Scene*> m_DrawableScenes; // May need to be a func? GetDrawableSceneList()?
+	std::vector<std::shared_ptr<Scene>> GetDrawableScenesInOrder() const;
 };
