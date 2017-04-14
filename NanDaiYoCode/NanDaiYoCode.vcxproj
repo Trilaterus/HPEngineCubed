@@ -156,9 +156,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FadeColour.cpp" />
-    <ClCompile Include="OptionsScreen.cpp" />
+    <ClCompile Include="Options.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneTransition.cpp" />
     <ClCompile Include="TestOverlay.cpp" />
@@ -181,11 +181,11 @@
     <ClInclude Include="DirectoryNavigator.h" />
     <ClInclude Include="FadeColour.h" />
     <ClInclude Include="Maths.h" />
-    <ClInclude Include="OptionsScreen.h" />
+    <ClInclude Include="Options.h" />
     <ClInclude Include="OverlayTransition.h" />
     <ClInclude Include="RandomResource.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTransition.h" />
     <ClInclude Include="ScreenTransition.h" />

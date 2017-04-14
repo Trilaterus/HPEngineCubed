@@ -9,17 +9,20 @@ smooth looking!)
 
 #include "ScreenTransition.h"
 
-class FadeColour : public ScreenTransition
+namespace Transition
 {
-public:
-	FadeColour();
-	FadeColour(float fFullDuration, sf::Color color = sf::Color::Black); // Defaults to fade to black
+	class FadeColour : public ScreenTransition
+	{
+	public:
+		FadeColour();
+		FadeColour(float fFullDuration, sf::Color color = sf::Color::Black); // Defaults to fade to black
 
-	bool update(float fFrameChunk);
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		bool update(float fFrameChunk);
+		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-private:
-	float m_fDuration;
-	sf::Color m_Colour;
-	float m_fTotalChunks;
-};
+	private:
+		float m_fDuration;
+		sf::Color m_Colour;
+		float m_fTotalChunks;
+	};
+}

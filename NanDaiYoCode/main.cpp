@@ -1,22 +1,21 @@
 #include <SFML/Graphics.hpp>
 #include "TextureManager.h"
 #include "SceneManager.h"
-#include "MainMenuScreen.h"
-#include "OptionsScreen.h"
+#include "MainMenu.h"
+#include "Options.h"
 
 #include <iostream> // For testing purposes
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1366, 768), "SFML works!");
-	//sf::RenderWindow* pWindow(&window);
 
 	sf::Clock clock;
 	float fFrameRate = 60.f;
 	window.setFramerateLimit(static_cast<unsigned int>(fFrameRate));
 
 	std::cout << TextureManager::getInstance().loadFromDirectory("Assets/Textures") << std::endl;
-	SceneManager::getInstance().clearAndAddScreen(new MainMenuScreen(window));
+	SceneManager::getInstance().clearAndAddScreen(new Screens::MainMenu(window));
 
 	while (window.isOpen())
 	{
@@ -29,7 +28,7 @@ int main()
 			SceneManager::getInstance().handleEvents(event);
 		}
 
-		if (clock.getElapsedTime().asSeconds() > 1.f / fFrameRate) // Only draw per frame rate innit...
+		if (clock.getElapsedTime().asSeconds() > 1.f / fFrameRate)
 		{
 			float fFrameChunk = clock.restart().asSeconds();
 			SceneManager::getInstance().update(fFrameChunk);

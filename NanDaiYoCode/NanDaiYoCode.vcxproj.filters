@@ -84,12 +84,6 @@
     <ClCompile Include="Transitioner.cpp">
       <Filter>Managers\SceneManager</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenuScreen.cpp">
-      <Filter>Scenes\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionsScreen.cpp">
-      <Filter>Scenes\Screens</Filter>
-    </ClCompile>
     <ClCompile Include="TestOverlay.cpp">
       <Filter>Scenes\Overlays</Filter>
     </ClCompile>
@@ -100,6 +94,12 @@
       <Filter>Managers\SceneManager\Transitions\ScreenTransitions</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Options.cpp">
+      <Filter>Scenes\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Scenes\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RandomResource.h">
@@ -156,12 +156,6 @@
     <ClInclude Include="Transitioner.h">
       <Filter>Managers\SceneManager</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenuScreen.h">
-      <Filter>Scenes\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionsScreen.h">
-      <Filter>Scenes\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="TestOverlay.h">
       <Filter>Scenes\Overlays</Filter>
     </ClInclude>
@@ -179,6 +173,12 @@
     </ClInclude>
     <ClInclude Include="Maths.h">
       <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Options.h">
+      <Filter>Scenes\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Scenes\Screens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
