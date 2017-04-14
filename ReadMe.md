@@ -18,6 +18,4 @@ The second game is a 2D fighting game (similar to Tekken or Street Fighter).
 
 And last (but not least!) is a 2D sidescrolling fighting game, as explained above!
 
-You can contact me by sending an email to HussainPatel@hotmail.co.uk
-
-Feel free to contact me if you want to talk about anything regarding... anything! (But let's try to start with something Game Dev related ^^)
+For screenshots and more detail on the features added, see my [DevLog on TIGSource](https://forums.tigsource.com/index.php?topic=60630.0)
