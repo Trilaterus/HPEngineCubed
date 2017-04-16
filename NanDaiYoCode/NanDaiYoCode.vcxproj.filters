@@ -100,6 +100,9 @@
     <ClCompile Include="MainMenu.cpp">
       <Filter>Scenes\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RandomResource.h">
@@ -179,6 +182,9 @@
     </ClInclude>
     <ClInclude Include="MainMenu.h">
       <Filter>Scenes\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

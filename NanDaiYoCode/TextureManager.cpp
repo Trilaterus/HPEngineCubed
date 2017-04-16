@@ -16,8 +16,6 @@ TextureManager& TextureManager::getInstance()
 	return instance;
 }
 
-
-
 int TextureManager::loadFromDirectory(const std::string& sFolderPath)
 {
 	std::vector<std::string> vFileNames = DirectoryNavigator::getFilesFromDirectory(sFolderPath);

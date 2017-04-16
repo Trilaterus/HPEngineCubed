@@ -1,8 +1,7 @@
-#include <SFML/Graphics.hpp>
 #include "TextureManager.h"
 #include "SceneManager.h"
 #include "MainMenu.h"
-#include "Options.h"
+#include "FontManager.h"
 
 #include <iostream> // For testing purposes
 
@@ -16,6 +15,8 @@ int main()
 
 	std::cout << TextureManager::getInstance().loadFromDirectory("Assets/Textures") << std::endl;
 	SceneManager::getInstance().clearAndAddScreen(new Screens::MainMenu(window));
+
+	std::cout << FontManager::getInstance().loadFromDirectory("Assets/Fonts") << std::endl;
 
 	while (window.isOpen())
 	{

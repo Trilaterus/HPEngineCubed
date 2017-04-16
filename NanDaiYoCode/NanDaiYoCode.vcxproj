@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FadeColour.cpp" />
+    <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="DirectoryNavigator.h" />
     <ClInclude Include="FadeColour.h" />
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="Options.h" />
     <ClInclude Include="OverlayTransition.h" />

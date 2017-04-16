@@ -11,7 +11,7 @@ ever needs to be changed (support for other platforms)
 
 namespace DirectoryNavigator
 {
-	std::vector<std::string> getFilesFromDirectory(const std::string& sFolderPath, const std::string& sFileExtension = "*")
+	inline std::vector<std::string> getFilesFromDirectory(const std::string& sFolderPath, const std::string& sFileExtension = "*")
 	{
 		// http://stackoverflow.com/a/20847429 , tl;dr windows only solution (no external libs tho)
 		std::vector<std::string> vFileNames;
