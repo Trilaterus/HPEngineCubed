@@ -37,7 +37,7 @@ namespace Screens
 		if (event.type == event.KeyPressed &&
 			event.key.code == sf::Keyboard::Right)
 		{
-			SceneManager::getInstance().popScreen(new Transition::FadeColour());
+			SceneManager::getInstance().popScreen(new Transition::FadeColour(0.5f, sf::Color(0, 0, 50)));
 		}
 
 		if (event.type == event.KeyPressed &&

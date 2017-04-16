@@ -1,5 +1,7 @@
 #include "FadeColour.h"
 
+#include "TextureManager.h"
+
 namespace Transition
 {
 	FadeColour::FadeColour()
@@ -38,9 +40,9 @@ namespace Transition
 
 	void FadeColour::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
-		sf::RectangleShape shape;
-		shape.setSize(sf::Vector2f((float)target.getSize().x, (float)target.getSize().y));
-		shape.setFillColor(m_Colour);
+		sf::Sprite sprite = sf::Sprite(TextureManager::getInstance().getTexture("purewhite"));
+		sprite.setScale(static_cast<float>(target.getSize().x), static_cast<float>(target.getSize().y));
+		sprite.setColor(m_Colour);
 
 		if (m_fTotalChunks < (m_fDuration / 2.f))
 		{
@@ -51,6 +53,6 @@ namespace Transition
 			target.draw(*m_nextScene);
 		}
 
-		target.draw(shape);
+		target.draw(sprite);
 	}
 }
