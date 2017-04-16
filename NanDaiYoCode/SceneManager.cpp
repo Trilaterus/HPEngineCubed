@@ -13,7 +13,7 @@ void SceneManager::pushScreen(Scene* pScene)
 	m_AllScenes.push_back(std::shared_ptr<Scene>(pScene));
 }
 
-void SceneManager::pushScreen(Scene* pScene, ScreenTransition* transition)
+void SceneManager::pushScreen(Scene* pScene, SceneTransition* transition)
 {
 	m_AllScenes.push_back(std::shared_ptr<Scene>(pScene));
 	m_Transitioner.startTransition(transition, m_AllScenes.at(m_AllScenes.size() - 2), m_AllScenes.back());
@@ -25,7 +25,7 @@ void SceneManager::clearAndAddScreen(Scene* pScene)
 	m_AllScenes.push_back(std::shared_ptr<Scene>(pScene));
 }
 
-void SceneManager::clearAndAddScreen(Scene* pScene, ScreenTransition* transition)
+void SceneManager::clearAndAddScreen(Scene* pScene, SceneTransition* transition)
 {
 	std::shared_ptr<Scene> nextScene(pScene);
 	m_Transitioner.startTransition(transition, m_AllScenes.back(), nextScene);
@@ -38,7 +38,7 @@ void SceneManager::popScene()
 	m_AllScenes.pop_back();
 }
 
-void SceneManager::popScreen(ScreenTransition* transition)
+void SceneManager::popScreen(SceneTransition* transition)
 {
 	if (m_AllScenes.back()->isOverlay()) // Prevent Overlays from being popped with a transition
 	{

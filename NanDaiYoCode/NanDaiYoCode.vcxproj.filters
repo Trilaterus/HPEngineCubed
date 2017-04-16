@@ -37,9 +37,6 @@
     <Filter Include="Managers\SceneManager\Transitions\ScreenTransitions">
       <UniqueIdentifier>{aeaf2bc7-f11f-4a87-8755-75bfc06f7e04}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Managers\SceneManager\Transitions\OverlayTransitions">
-      <UniqueIdentifier>{ecfdfdda-1247-4c70-a564-46df665f18d8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RandomResource.cpp">
@@ -162,13 +159,7 @@
     <ClInclude Include="TestOverlay.h">
       <Filter>Scenes\Overlays</Filter>
     </ClInclude>
-    <ClInclude Include="OverlayTransition.h">
-      <Filter>Managers\SceneManager\Transitions\Abstract</Filter>
-    </ClInclude>
     <ClInclude Include="SceneTransition.h">
-      <Filter>Managers\SceneManager\Transitions\Abstract</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenTransition.h">
       <Filter>Managers\SceneManager\Transitions\Abstract</Filter>
     </ClInclude>
     <ClInclude Include="FadeColour.h">

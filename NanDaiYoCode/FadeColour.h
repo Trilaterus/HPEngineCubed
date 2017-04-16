@@ -7,11 +7,11 @@ smooth looking!)
 
 #pragma once
 
-#include "ScreenTransition.h"
+#include "SceneTransition.h"
 
 namespace Transition
 {
-	class FadeColour : public ScreenTransition
+	class FadeColour : public SceneTransition
 	{
 	public:
 		FadeColour();

@@ -11,8 +11,7 @@ being updated and event handled.
 #include "Scene.h"
 #include <memory>
 #include "Transitioner.h"
-#include "ScreenTransition.h"
-#include "OverlayTransition.h"
+#include "SceneTransition.h"
 
 class SceneManager : public sf::Drawable
 {
@@ -20,13 +19,13 @@ public:
 	static SceneManager& getInstance();
 
 	void pushScreen(Scene* pScene); // Performs instant transition
-	void pushScreen(Scene* pScene, ScreenTransition* transition);
+	void pushScreen(Scene* pScene, SceneTransition* transition);
 
 	void clearAndAddScreen(Scene* pScene);
-	void clearAndAddScreen(Scene* pScene, ScreenTransition* transition);
+	void clearAndAddScreen(Scene* pScene, SceneTransition* transition);
 
 	void popScene(); // Use this for all Overalys and Instant Screen
-	void popScreen(ScreenTransition* transition);
+	void popScreen(SceneTransition* transition);
 
 	void pushOverlay(Scene* pScene);
 
