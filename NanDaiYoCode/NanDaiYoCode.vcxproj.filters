@@ -100,6 +100,9 @@
     <ClCompile Include="FontManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
+    <ClCompile Include="UIText.cpp">
+      <Filter>UI Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RandomResource.h">
@@ -176,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="FontManager.h">
       <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="UIText.h">
+      <Filter>UI Elements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

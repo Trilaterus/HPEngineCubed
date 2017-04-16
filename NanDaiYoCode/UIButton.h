@@ -9,7 +9,6 @@ A button that has idle, hovered and selected animations.
 class UIButton : public UIImage
 {
 public:
-	UIButton(const std::string& sTextureName);
 	UIButton(const std::string& sTextureName, const sf::RenderTarget& target, UIPosition position);
 
 	void handleEvent();

@@ -25,17 +25,11 @@ public:
 
 protected:
 	UIPosition m_Position;
+	sf::Vector2f m_vScreenAnchorOGPos; // May not be accurate, ensure to update with setScreenAnchor() and/or setOffsetPosition()
 
-	//float m_fWidth; // Can't really figure this out at this abstract of a point
-	//float m_fHeight; // so no point including it here
-
-	// Also can't figure this out since we don't have the screen.
-	// If needed could include a GetActualPos(sf::Window), need to
-	// pass the window so that you can calculate it's actual position...
-	// May actually need that for event handling? :S
-	//float m_fXPos; // Actual position on the screen
-	//float m_fYPos;
+	void setOrigin(sf::Transformable* sfObject, float fWidth, float fHeight);
+	void setScreenAnchor(sf::Transformable* sfObject, const sf::RenderTarget& target);
+	void setOffsetPosition(sf::Transformable* sfObject, float fXOffset, float fYOffset);
 
 private:
-
 };

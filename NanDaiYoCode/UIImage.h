@@ -15,9 +15,6 @@ the achor setting functions.
 class UIImage : public UIObject
 {
 public:
-	///<summary>Creates an image at the default position with a texture</summary>
-	UIImage(const std::string& sTextureName);
-
 	///<summary>Creates an image at a given position with a texture</summary>
 	UIImage(const std::string& sTextureName, const sf::RenderTarget& target, UIPosition position);
 
@@ -31,13 +28,8 @@ public:
 
 protected:
 	sf::Sprite m_Sprite;
-	sf::Vector2f m_vScreenAnchorOGPos;
 	UITextureAnimator m_TextureAnimator;
 	UIProgrammedAnimation m_ProgrammedAnimator;
-
-	void setOrigin();
-	void setScreenAnchor(const sf::RenderTarget& target);
-	void setOffsetPosition(float fXOffset, float fYOffset);
 
 private:
 };

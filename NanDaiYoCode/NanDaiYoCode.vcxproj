@@ -165,6 +165,7 @@
     <ClCompile Include="TestOverlay.cpp" />
     <ClCompile Include="Transitioner.cpp" />
     <ClCompile Include="UIProgrammedAnimation.cpp" />
+    <ClCompile Include="UIText.cpp" />
     <ClCompile Include="UITextureAnimationInfo.cpp" />
     <ClCompile Include="UITextureAnimator.cpp" />
     <ClCompile Include="UIButton.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Transitioner.h" />
     <ClInclude Include="UIAnchorEnum.h" />
     <ClInclude Include="UIProgrammedAnimation.h" />
+    <ClInclude Include="UIText.h" />
     <ClInclude Include="UITextureAnimationInfo.h" />
     <ClInclude Include="UITextureAnimator.h" />
     <ClInclude Include="UIButton.h" />

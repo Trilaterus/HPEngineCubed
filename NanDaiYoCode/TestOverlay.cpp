@@ -3,6 +3,7 @@
 #include "SceneManager.h"
 #include "UIImage.h"
 #include "FadeColour.h"
+#include "UIText.h"
 
 namespace Overlays
 {
@@ -13,8 +14,11 @@ namespace Overlays
 		m_isOverlay = true;
 
 		UIImage background = UIImage("background", m_Window, UIPosition());
-
 		m_AllUI.push_back(std::make_shared<UIImage>(background));
+
+		UIText someText = UIText("Hemi", m_Window, UIPosition(UIAnchor::CENTRE, 0.f, 120.f));
+		someText.setText("Some text!");
+		m_AllUI.push_back(std::make_shared<UIText>(someText));
 	}
 
 	void Test::handleEvents(const sf::Event& event)
@@ -23,7 +27,6 @@ namespace Overlays
 			event.key.code == sf::Keyboard::Down)
 		{
 			SceneManager::getInstance().popScene();
-			//SceneManager::getInstance().popScreen(new FadeColour()); // Handled appropriately
 		}
 	}
 
