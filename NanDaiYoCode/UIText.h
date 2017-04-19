@@ -19,5 +19,13 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-	sf::Text m_Text;
+	std::string m_sRawString;
+	std::string m_sFontName;
+	std::vector<sf::Text> m_AllTexts;
+
+	const std::string m_sColourTag;
+
+	std::vector<sf::Text> parseRawString();
+	bool validateTagContents(const std::vector<std::string>& vTagContents);
+	void updateTextModifier(sf::Text& modifier, const std::vector<std::string>& vTagContents);
 };

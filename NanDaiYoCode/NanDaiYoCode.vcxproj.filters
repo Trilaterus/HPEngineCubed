@@ -132,9 +132,6 @@
     <ClInclude Include="UIButton.h">
       <Filter>UI Elements</Filter>
     </ClInclude>
-    <ClInclude Include="StringValidator.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
     <ClInclude Include="UITexture.h">
       <Filter>UI Elements\Abstract</Filter>
     </ClInclude>
@@ -182,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="UIText.h">
       <Filter>UI Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

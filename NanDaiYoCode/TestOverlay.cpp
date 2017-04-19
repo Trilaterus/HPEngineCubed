@@ -16,8 +16,8 @@ namespace Overlays
 		UIImage background = UIImage("background", m_Window, UIPosition());
 		m_AllUI.push_back(std::make_shared<UIImage>(background));
 
-		UIText someText = UIText("Hemi", m_Window, UIPosition(UIAnchor::CENTRE, 0.f, 120.f));
-		someText.setText("Some text!");
+		UIText someText = UIText("Hemi", m_Window, UIPosition());
+		someText.setText("Uncoloured string... <c 123 213 132>Coloured string!");
 		m_AllUI.push_back(std::make_shared<UIText>(someText));
 	}
 

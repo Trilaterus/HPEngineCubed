@@ -190,7 +190,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTransition.h" />
-    <ClInclude Include="StringValidator.h" />
+    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="TestOverlay.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="tinyxml2.h" />
