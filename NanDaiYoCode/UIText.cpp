@@ -6,7 +6,6 @@
 UIText::UIText(const std::string& sFontName, const sf::RenderTarget& target, UIPosition position)
 	:
 	UIObject(position),
-	m_sColourTag("c"),
 	m_sFontName(sFontName)
 {
 	//UIObject::setOrigin(&m_Text, m_Text.getGlobalBounds().width, m_Text.getGlobalBounds().height);
@@ -49,14 +48,13 @@ std::vector<sf::Text> UIText::parseRawString()
 
 	std::vector<sf::Text> AllTexts;
 	std::string sCurrentString; // The currently built up string
-	sf::Text sfTextModifier; // The current modifiers to the text
-	sfTextModifier.setFont(FontManager::getInstance().getFont(m_sFontName));
 
 	bool bParsingTag = false;
 
 	char cOpenTag = '<';
 	char cCloseTag = '>';
 	char cDelimiter = ' ';
+	char cEndTag = '/';
 
 	for (std::string::const_iterator cCurrentChar = sRawString.begin(); cCurrentChar != sRawString.end(); ++cCurrentChar)
 	{
@@ -64,7 +62,6 @@ std::vector<sf::Text> UIText::parseRawString()
 		{
 			bParsingTag = false;
 
-			// Validate rest of tag
 			std::string::const_iterator cTagEnd = std::find(cCurrentChar, sRawString.end(), cCloseTag);
 
 			if (cTagEnd == sRawString.end())
@@ -78,15 +75,34 @@ std::vector<sf::Text> UIText::parseRawString()
 
 			std::vector<std::string> vAllStrings = StringHelper::SplitString(sTagContents, cDelimiter);
 
-			if (validateTagContents(vAllStrings))
-			{
-				updateTextModifier(sfTextModifier, vAllStrings);
-			}
-			else
+			// Handling for "<>"
+			if (vAllStrings.size() == 0)
 			{
 				sCurrentString.push_back(cOpenTag);
 				sCurrentString.push_back(*cCurrentChar);
 				continue;
+			}
+
+			std::shared_ptr<TextTagMod> textTag(TextTag::tagList(vAllStrings.at(0).c_str()[0]));
+
+			if (textTag == nullptr || !textTag->validate(vAllStrings))
+			{
+				sCurrentString.push_back(cOpenTag);
+				sCurrentString.push_back(*cCurrentChar);
+				continue;
+			}
+
+			// Check for EndTag (pop tag)
+			if (vAllStrings.at(0).c_str()[0] == cEndTag)
+			{
+				if (m_TagStack.size() > 0)
+				{
+					m_TagStack.pop_back();
+				}
+			}
+			else // Push back tag as normal
+			{
+				m_TagStack.push_back(textTag);
 			}
 
 			std::advance(cCurrentChar, cTagEnd - cCurrentChar);
@@ -103,7 +119,13 @@ std::vector<sf::Text> UIText::parseRawString()
 				}
 			}
 
-			// End building current string
+			sf::Text sfTextModifier;
+			sfTextModifier.setFont(FontManager::getInstance().getFont(m_sFontName));
+			for (std::shared_ptr<TextTagMod> pTag : m_TagStack)
+			{
+				pTag->modifyText(sfTextModifier);
+			}
+
 			sfTextModifier.setString(sCurrentString);
 			AllTexts.push_back(sfTextModifier);
 
@@ -112,62 +134,6 @@ std::vector<sf::Text> UIText::parseRawString()
 			bParsingTag = true;
 		}
 	}
-	// End of input string
 
 	return AllTexts;
-}
-
-bool UIText::validateTagContents(const std::vector<std::string>& vTagContents)
-{
-	if (vTagContents.empty())
-	{
-		return false;
-	}
-
-	if (vTagContents.at(0) == m_sColourTag)
-	{
-		if (vTagContents.size() < 4)
-		{
-			return false; // Not enough colour members
-		}
-
-		for (unsigned int i = 1; i < vTagContents.size(); ++i)
-		{
-			if (!StringHelper::CanStringToInt(vTagContents.at(i)))
-			{
-				return false; // NaN
-			}
-
-			int iValue = std::stoi(vTagContents.at(i));
-
-			if (iValue > 255 || iValue < 0)
-			{
-				return false; // The number is out of scope for an RGB colour value
-			}
-		}
-
-		return true;
-	}
-
-	return false; // Unrecognised first tag
-}
-
-void UIText::updateTextModifier(sf::Text& modifier, const std::vector<std::string>& vTagContents)
-{
-	// TagContents has been validated so assume it's safe
-	if (vTagContents.at(0) == m_sColourTag)
-	{
-		int colourValues[4] = { 0, 0, 0, 255 };
-
-		int tagMembers = vTagContents.size() - 1;
-
-		for (unsigned int i = 1; i < vTagContents.size(); ++i)
-		{
-			colourValues[i - 1] = std::stoi(vTagContents.at(i));
-		}
-
-		modifier.setFillColor(sf::Color(colourValues[0], colourValues[1], colourValues[2], colourValues[4]));
-
-		return;
-	}
 }

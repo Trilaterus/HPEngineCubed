@@ -12,7 +12,7 @@ be converted to various types.
 
 namespace StringHelper
 {
-	bool CanStringToInt(const std::string& sText)
+	inline bool CanStringToInt(const std::string& sText)
 	{
 		// http://stackoverflow.com/questions/4654636/how-to-determine-if-a-string-is-a-number-with-c	
 		std::string::const_iterator it = sText.begin();
@@ -20,7 +20,7 @@ namespace StringHelper
 		return !sText.empty() && it == sText.end();
 	}
 
-	std::vector<std::string> SplitString(const std::string& sText, const char sDelimiter = ' ')
+	inline std::vector<std::string> SplitString(const std::string& sText, const char sDelimiter = ' ')
 	{
 		std::vector<std::string> AllStrings;
 

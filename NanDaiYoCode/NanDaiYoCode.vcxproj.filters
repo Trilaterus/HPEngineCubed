@@ -37,6 +37,15 @@
     <Filter Include="Managers\SceneManager\Transitions\ScreenTransitions">
       <UniqueIdentifier>{aeaf2bc7-f11f-4a87-8755-75bfc06f7e04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI Elements\UIText">
+      <UniqueIdentifier>{b9761cd2-5838-4380-a01c-248ee005bc77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Elements\UIText\TextTagMods">
+      <UniqueIdentifier>{5df0a050-417b-442e-9225-a0746556efd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Elements\UIText\TextTagMods\Abstract">
+      <UniqueIdentifier>{5753a267-d948-40b6-bc1c-d6e696b8c3f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RandomResource.cpp">
@@ -101,7 +110,13 @@
       <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="UIText.cpp">
-      <Filter>UI Elements</Filter>
+      <Filter>UI Elements\UIText</Filter>
+    </ClCompile>
+    <ClCompile Include="ColourTagMod.cpp">
+      <Filter>UI Elements\UIText\TextTagMods</Filter>
+    </ClCompile>
+    <ClCompile Include="EndTagMod.cpp">
+      <Filter>UI Elements\UIText\TextTagMods</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,11 +192,23 @@
     <ClInclude Include="FontManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="UIText.h">
-      <Filter>UI Elements</Filter>
-    </ClInclude>
     <ClInclude Include="StringHelper.h">
       <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="UIText.h">
+      <Filter>UI Elements\UIText</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTagMod.h">
+      <Filter>UI Elements\UIText\TextTagMods\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="ColourTagMod.h">
+      <Filter>UI Elements\UIText\TextTagMods</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTagList.h">
+      <Filter>UI Elements\UIText\TextTagMods</Filter>
+    </ClInclude>
+    <ClInclude Include="EndTagMod.h">
+      <Filter>UI Elements\UIText\TextTagMods</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ namespace Overlays
 		m_AllUI.push_back(std::make_shared<UIImage>(background));
 
 		UIText someText = UIText("Hemi", m_Window, UIPosition());
-		someText.setText("Uncoloured string... <c 123 213 132>Coloured string!");
+		someText.setText("Normal colour, <c 123 123 123>different colour, <c 1 2 3 150>colour transparency</>, prev colour,</> normal colour");
 		m_AllUI.push_back(std::make_shared<UIText>(someText));
 	}
 

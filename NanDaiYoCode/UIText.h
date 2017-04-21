@@ -6,6 +6,8 @@ Inherits from UIObject.
 #pragma once
 
 #include "UIObject.h"
+#include "TextTagList.h"
+#include <memory>
 
 class UIText : public UIObject
 {
@@ -22,10 +24,8 @@ private:
 	std::string m_sRawString;
 	std::string m_sFontName;
 	std::vector<sf::Text> m_AllTexts;
-
-	const std::string m_sColourTag;
+	std::vector<std::shared_ptr<TextTagMod>> m_TagStack;
 
 	std::vector<sf::Text> parseRawString();
-	bool validateTagContents(const std::vector<std::string>& vTagContents);
-	void updateTextModifier(sf::Text& modifier, const std::vector<std::string>& vTagContents);
+
 };
