@@ -1,7 +1,7 @@
 /*
-This class pops off a tag from the stack. It should look like </>.
+This class makes the following text draw on a new line using <br>
 The main handling for this class happens in UIText, since that's
-where the stack of tags is.
+where the position information for all texts are.
 */
 
 #pragma once
@@ -10,10 +10,10 @@ where the stack of tags is.
 
 namespace TextTag
 {
-	class End : public TextTagMod
+	class BreakLine : public TextTagMod
 	{
 	public:
-		End();
+		BreakLine();
 
 		bool validate(const std::vector<std::string>& vTagContents);
 		void modifyText(sf::Text& sfText);

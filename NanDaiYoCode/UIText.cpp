@@ -30,15 +30,9 @@ void UIText::update(float fFrameChunk)
 
 void UIText::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	float fXOffset = 0.f;
-
 	for (sf::Text text : m_AllTexts)
 	{
-		text.move(fXOffset, 0.f);
-
 		target.draw(text);
-
-		fXOffset += text.getGlobalBounds().width;
 	}
 }
 
@@ -51,10 +45,14 @@ std::vector<sf::Text> UIText::parseRawString()
 
 	bool bParsingTag = false;
 
+	float fXOffset = 0.f;
+	float fYOffset = 0.f;
+
 	char cOpenTag = '<';
 	char cCloseTag = '>';
 	char cDelimiter = ' ';
 	char cEndTag = '/';
+	std::string sBreakLineTag = "br";
 
 	for (std::string::const_iterator cCurrentChar = sRawString.begin(); cCurrentChar != sRawString.end(); ++cCurrentChar)
 	{
@@ -83,7 +81,7 @@ std::vector<sf::Text> UIText::parseRawString()
 				continue;
 			}
 
-			std::shared_ptr<TextTagMod> textTag(TextTag::tagList(vAllStrings.at(0).c_str()[0]));
+			std::shared_ptr<TextTagMod> textTag(TextTag::tagList(vAllStrings.at(0)));
 
 			if (textTag == nullptr || !textTag->validate(vAllStrings))
 			{
@@ -99,6 +97,15 @@ std::vector<sf::Text> UIText::parseRawString()
 				{
 					m_TagStack.pop_back();
 				}
+			}
+			else if (vAllStrings.at(0) == sBreakLineTag)
+			{
+				sf::Text sfTextModifier;
+				sfTextModifier.setFont(FontManager::getInstance().getFont(m_sFontName));
+				sfTextModifier.setString("|ILW"); // Use variety of letters in case character is missing/different sizes in different fonts
+
+				fYOffset += sfTextModifier.getGlobalBounds().height;
+				fXOffset = 0.f;
 			}
 			else // Push back tag as normal
 			{
@@ -121,12 +128,16 @@ std::vector<sf::Text> UIText::parseRawString()
 
 			sf::Text sfTextModifier;
 			sfTextModifier.setFont(FontManager::getInstance().getFont(m_sFontName));
+			sfTextModifier.setString(sCurrentString);
+			sfTextModifier.setPosition(fXOffset, fYOffset);
+
 			for (std::shared_ptr<TextTagMod> pTag : m_TagStack)
 			{
 				pTag->modifyText(sfTextModifier);
 			}
 
-			sfTextModifier.setString(sCurrentString);
+			fXOffset += sfTextModifier.getGlobalBounds().width;
+
 			AllTexts.push_back(sfTextModifier);
 
 			sCurrentString.clear();

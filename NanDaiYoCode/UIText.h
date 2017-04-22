@@ -26,6 +26,7 @@ private:
 	std::vector<sf::Text> m_AllTexts;
 	std::vector<std::shared_ptr<TextTagMod>> m_TagStack;
 
+	// Takes the current raw string and updates the vector of AllTexts (with effects and positioning)
 	std::vector<sf::Text> parseRawString();
 
 };

@@ -118,6 +118,9 @@
     <ClCompile Include="EndTagMod.cpp">
       <Filter>UI Elements\UIText\TextTagMods</Filter>
     </ClCompile>
+    <ClCompile Include="BreakLineTag.cpp">
+      <Filter>UI Elements\UIText\TextTagMods</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RandomResource.h">
@@ -208,6 +211,9 @@
       <Filter>UI Elements\UIText\TextTagMods</Filter>
     </ClInclude>
     <ClInclude Include="EndTagMod.h">
+      <Filter>UI Elements\UIText\TextTagMods</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakLineTag.h">
       <Filter>UI Elements\UIText\TextTagMods</Filter>
     </ClInclude>
   </ItemGroup>

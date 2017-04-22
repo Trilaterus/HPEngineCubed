@@ -7,18 +7,23 @@ to the appropriate text tag based on the function character.
 
 #include "ColourTagMod.h"
 #include "EndTagMod.h"
+#include "BreakLineTag.h"
 
 namespace TextTag
 {
-	inline TextTagMod* tagList(char c)
+	inline TextTagMod* tagList(std::string sCommand)
 	{
-		if (c == 'c')
+		if (sCommand == "c")
 		{
 			return new TextTag::Colour();
 		}
-		if (c == '/')
+		else if (sCommand == "/")
 		{
 			return new TextTag::End();
+		}
+		else if (sCommand == "br")
+		{
+			return new TextTag::BreakLine();
 		}
 
 		return nullptr;
