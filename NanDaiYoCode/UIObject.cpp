@@ -5,20 +5,20 @@ void UIObject::setOrigin(sf::Transformable* sfObject, float fWidth, float fHeigh
 	// If having issues with texture rect/position being off try understanding this thread
 	// https://en.sfml-dev.org/forums/index.php?topic=18049.0
 
-	if (m_Position.m_iOriginAnchor & 2)
+	if (m_Position.m_iOriginAnchor & 2) // If RIGHT
 	{
 		sfObject->setOrigin(fWidth, sfObject->getOrigin().y);
 	}
-	else if (!(m_Position.m_iOriginAnchor & 1))
+	else if (!(m_Position.m_iOriginAnchor & 1)) // If !LEFT (so CENTRE)
 	{
 		sfObject->setOrigin(fWidth / 2.f, sfObject->getOrigin().y);
 	}
 
-	if (m_Position.m_iOriginAnchor & 8)
+	if (m_Position.m_iOriginAnchor & 8) // If BOT
 	{
 		sfObject->setOrigin(sfObject->getOrigin().x, fHeight);
 	}
-	else if (!(m_Position.m_iOriginAnchor & 4))
+	else if (!(m_Position.m_iOriginAnchor & 4)) // If !TOP (so CENTRE)
 	{
 		sfObject->setOrigin(sfObject->getOrigin().x, fHeight / 2.f);
 	}

@@ -3,21 +3,20 @@
 #include "FontManager.h"
 #include "StringHelper.h"
 
-UIText::UIText(const std::string& sFontName, const sf::RenderTarget& target, UIPosition position)
+UIText::UIText(const std::string& sFontName, const sf::RenderTarget& target, UIPosition position, Alignment align)
 	:
 	UIObject(position),
-	m_sFontName(sFontName)
+	m_sFontName(sFontName),
+	m_Alignment(align)
 {
-	//UIObject::setOrigin(&m_Text, m_Text.getGlobalBounds().width, m_Text.getGlobalBounds().height);
-	//UIObject::setScreenAnchor(&m_Text, target);
-	//UIObject::setOffsetPosition(&m_Text, position.m_fXOffset, position.m_fYOffset);
+
 }
 
 void UIText::setText(const std::string& sNewText)
 {
 	m_sRawString = sNewText;
-	//UIObject::setOrigin(&m_Text, m_Text.getGlobalBounds().width, m_Text.getGlobalBounds().height);
 	m_AllTexts = parseRawString();
+	this->alignTextVector();
 }
 
 void UIText::handleEvent()
@@ -30,17 +29,21 @@ void UIText::update(float fFrameChunk)
 
 void UIText::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (sf::Text text : m_AllTexts)
+	for (const std::vector<sf::Text>& vectors : m_AllTexts)
 	{
-		target.draw(text);
+		for (sf::Text text : vectors)
+		{
+			target.draw(text);
+		}
 	}
 }
 
-std::vector<sf::Text> UIText::parseRawString()
+std::vector<std::vector<sf::Text>> UIText::parseRawString()
 {
 	const std::string sRawString = m_sRawString;
 
-	std::vector<sf::Text> AllTexts;
+	std::vector<std::vector<sf::Text>> vAllLines;
+	std::vector<sf::Text> vCurrentLine;
 	std::string sCurrentString; // The currently built up string
 
 	bool bParsingTag = false;
@@ -106,6 +109,9 @@ std::vector<sf::Text> UIText::parseRawString()
 
 				fYOffset += sfTextModifier.getGlobalBounds().height;
 				fXOffset = 0.f;
+
+				vAllLines.push_back(vCurrentLine);
+				vCurrentLine.clear();
 			}
 			else // Push back tag as normal
 			{
@@ -138,7 +144,7 @@ std::vector<sf::Text> UIText::parseRawString()
 
 			fXOffset += sfTextModifier.getGlobalBounds().width;
 
-			AllTexts.push_back(sfTextModifier);
+			vCurrentLine.push_back(sfTextModifier);
 
 			sCurrentString.clear();
 
@@ -146,5 +152,59 @@ std::vector<sf::Text> UIText::parseRawString()
 		}
 	}
 
-	return AllTexts;
+	vAllLines.push_back(vCurrentLine);
+
+	return vAllLines;
+}
+
+void UIText::alignTextVector()
+{
+	// Find longest line
+	float fLongestLine = 0.f;
+	std::vector<float> vLineWidths;
+
+	for (const std::vector<sf::Text>& vector : m_AllTexts)
+	{
+		float fLineWidth = 0.f;
+
+		for (const sf::Text& text : vector)
+		{
+			fLineWidth += text.getGlobalBounds().width;
+		}
+
+		vLineWidths.push_back(fLineWidth);
+		fLongestLine = std::max(fLongestLine, fLineWidth);
+	}
+
+	// Move each objects centre to match the centre of the largest one
+	float fLongestLineOrigin = fLongestLine / 2.f;
+
+	for (unsigned int i = 0; i < vLineWidths.size(); ++i)
+	{
+		float fLineOrigin = vLineWidths.at(i) / 2.f;
+		float fOffset = fLongestLineOrigin - fLineOrigin;
+
+		float fAlignedOffset = fOffset;
+
+		switch (m_Alignment)
+		{
+		case Alignment::LEFT:
+		default:
+			fAlignedOffset *= 0.f;
+			break;
+
+		case Alignment::CENTRE:
+			fAlignedOffset *= 1;
+			break;
+
+		case Alignment::RIGHT:
+			fAlignedOffset *= 2.f;
+			break;
+		}
+
+		for (sf::Text& text : m_AllTexts.at(i))
+		{
+			text.move(fAlignedOffset, 0.f);
+		}
+	}
 }
