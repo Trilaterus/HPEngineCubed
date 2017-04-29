@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "FadeColour.h"
 #include "TestOverlay.h"
+#include "UIButton.h"
 
 namespace Screens
 {
@@ -19,10 +20,14 @@ namespace Screens
 		UIImage logoTopRight = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::RIGHT | UIAnchor::TOP));
 		UIImage logoBotLeftCentre = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, UIAnchor::CENTRE));
 
+		UIButton button = UIButton("blueSheet", m_Window, UIPosition());
+		button.chooseProgrammedAnimation().setSinMovement(SinMovement(0.f, 0.f, 4.f, 2.f));
+
 		m_AllUI.push_back(std::make_shared<UIImage>(logo));
 		m_AllUI.push_back(std::make_shared<UIImage>(logoLeft));
 		m_AllUI.push_back(std::make_shared<UIImage>(logoTopRight));
 		m_AllUI.push_back(std::make_shared<UIImage>(logoBotLeftCentre));
+		m_AllUI.push_back(std::make_shared<UIButton>(button));
 	}
 
 	void MainMenu::handleEvents(const sf::Event& event)
