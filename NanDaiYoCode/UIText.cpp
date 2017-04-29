@@ -114,11 +114,7 @@ std::vector<std::vector<sf::Text>> UIText::parseRawString()
 			}
 			else if (vAllStrings.at(0) == sBreakLineTag)
 			{
-				sf::Text sfTextModifier;
-				sfTextModifier.setFont(FontManager::getInstance().getFont(m_sFontName));
-				sfTextModifier.setString("|ILWy_,"); // Use variety of letters in case character is missing/different sizes in different fonts (and use low letters to modifiy the height)
-
-				fYOffset += sfTextModifier.getGlobalBounds().height;
+				fYOffset += FontManager::getInstance().getFont(m_sFontName).getLineSpacing(30); // Default value
 				fXOffset = 0.f;
 
 				vAllLines.push_back(vCurrentLine);
@@ -217,14 +213,7 @@ void UIText::alignTextVector()
 		}
 	}
 
-	float fTotalHeight = 0.f;
-
-	if (m_AllTexts.size() != 0)
-	{
-		sf::Text text = m_AllTexts.at(0).at(0);
-		text.setString("|LIWy_,");
-		fTotalHeight = text.getGlobalBounds().height * m_AllTexts.size();
-	}
+	float fTotalHeight = FontManager::getInstance().getFont(m_sFontName).getLineSpacing(30) * m_AllTexts.size(); // 30 is default char size
 
 	this->setupRenderTexture(static_cast<unsigned int>(std::ceil(fLongestLine)), static_cast<unsigned int>(std::ceil(fTotalHeight)));
 }

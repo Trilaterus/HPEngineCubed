@@ -19,7 +19,7 @@ namespace Overlays
 		m_AllUI.push_back(std::make_shared<UIImage>(background));
 
 		UIText centreAlign = UIText("Lin", m_Window, UIPosition(), UIText::Alignment::LEFT);
-		centreAlign.setText("Normal colour, <c 123 213 123>different colour, <c 1 2 3 150>colour<br>transparency,</> prev colour,<br></> normal colour");
+		centreAlign.setText("Normal colour, <c 123 213 123>different colour, <c 1 2 3 150>colour<br>transparency,</> prev colour,<br></>normal colour");
 		m_AllUI.push_back(std::make_shared<UIText>(centreAlign));
 	}
 
