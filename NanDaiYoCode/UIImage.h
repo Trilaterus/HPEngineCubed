@@ -22,7 +22,6 @@ public:
 	void setTextureAnimationSpeed(int iFrameSpeed);
 	UIProgrammedAnimation& chooseProgrammedAnimation();
 
-	void handleEvent(/*sfEvent?*/);
 	void update(float fFrameChunk);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

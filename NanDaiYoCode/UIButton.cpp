@@ -7,9 +7,20 @@ UIButton::UIButton(const std::string& sTextureName, const sf::RenderTarget& targ
 
 }
 
-void UIButton::handleEvent()
+bool UIButton::mouseWithinBounds(const sf::RenderWindow& window)
 {
-	UIImage::handleEvent();
+	const sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+	const sf::FloatRect spriteBounds = m_Sprite.getGlobalBounds();
+
+	if (mousePos.x >= spriteBounds.left &&
+		mousePos.x <= spriteBounds.left + spriteBounds.width &&
+		mousePos.y >= spriteBounds.top &&
+		mousePos.y <= spriteBounds.top + spriteBounds.height)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 void UIButton::update(float fFrameChunk)

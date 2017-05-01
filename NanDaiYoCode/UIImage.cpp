@@ -30,11 +30,6 @@ UIProgrammedAnimation& UIImage::chooseProgrammedAnimation()
 	return m_ProgrammedAnimator;
 }
 
-void UIImage::handleEvent()
-{
-
-}
-
 void UIImage::update(float fFrameChunk)
 {
 	m_TextureAnimator.updateFrameByTime(fFrameChunk);
