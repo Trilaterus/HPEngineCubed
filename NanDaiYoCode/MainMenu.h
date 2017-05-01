@@ -16,5 +16,7 @@ namespace Screens
 
 	private:
 		std::shared_ptr<UIButton> m_pButton;
+
+		void handleOptionsButton();
 	};
 }

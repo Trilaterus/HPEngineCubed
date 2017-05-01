@@ -70,11 +70,9 @@ void SceneManager::update(float fFrameChunk)
 	{
 		m_Transitioner.update(fFrameChunk);
 	}
-	else
-	{
-		// May need some null checking...
-		m_AllScenes.back()->update(fFrameChunk);
-	}
+
+	// May need some null checking...
+	m_AllScenes.back()->update(fFrameChunk);
 }
 
 void SceneManager::draw(sf::RenderTarget& target, sf::RenderStates states) const

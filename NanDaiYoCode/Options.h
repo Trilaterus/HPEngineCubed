@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scene.h"
+#include "UIButton.h"
 
 namespace Screens
 {
@@ -14,6 +15,8 @@ namespace Screens
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	private:
+		std::shared_ptr<UIButton> m_pButton;
 
+		void handleMainMenuButton();
 	};
 }

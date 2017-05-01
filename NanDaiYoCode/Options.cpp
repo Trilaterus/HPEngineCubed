@@ -10,7 +10,8 @@ namespace Screens
 {
 	Options::Options(const sf::RenderWindow& window)
 		:
-		Scene(window)
+		Scene(window),
+		m_pButton(new UIButton("blueSheet", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, -10.f, -10.f)))
 	{
 		m_isOverlay = false; // Can't call this in the ':' bit of the constructor for some reason...
 
@@ -30,30 +31,53 @@ namespace Screens
 		m_AllUI.push_back(std::make_shared<UIImage>(scottLeft));
 		m_AllUI.push_back(std::make_shared<UIImage>(scott));
 		m_AllUI.push_back(std::make_shared<UIImage>(scottRight));
+		m_AllUI.push_back(m_pButton);
 	}
 
 	void Options::handleEvents(const sf::Event& event)
 	{
 		if (event.type == event.KeyPressed &&
-			event.key.code == sf::Keyboard::Right)
-		{
-			SceneManager::getInstance().popScreen(new Transition::FadeColour(0.5f, sf::Color(0, 0, 50)));
-		}
-
-		if (event.type == event.KeyPressed &&
 			event.key.code == sf::Keyboard::Up)
 		{
 			SceneManager::getInstance().pushOverlay(new Overlays::Test(m_Window));
 		}
+
+		m_pButton->passEvent(event, m_Window);
 	}
 
 	void Options::update(float fFrameChunk)
 	{
+		this->handleMainMenuButton();
+
 		Scene::update(fFrameChunk); // Calls update on all the UI
 	}
 
 	void Options::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		Scene::draw(target, states); // Calls draw on all the UI
+	}
+
+	void Options::handleMainMenuButton()
+	{
+		switch (m_pButton->GetState())
+		{
+		case UIButton::RELEASE:
+			m_pButton->setTextureAnimation("Idle");
+			SceneManager::getInstance().pushScreen(new Screens::MainMenu(m_Window), new Transition::FadeColour());
+			break;
+
+		case UIButton::CLICK:
+			m_pButton->setTextureAnimation("Click");
+			break;
+
+		case UIButton::HOVER:
+			m_pButton->setTextureAnimation("Hover");
+			break;
+
+		case UIButton::IDLE:
+		default:
+			m_pButton->setTextureAnimation("Idle");
+			break;
+		}
 	}
 }

@@ -12,7 +12,7 @@ namespace Screens
 	MainMenu::MainMenu(const sf::RenderWindow& window)
 		:
 		Scene(window),
-		m_pButton(std::make_shared<UIButton>(UIButton("blueSheet", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::LEFT, 10.f, -10.f))))
+		m_pButton(new UIButton("blueSheet", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::LEFT, 10.f, -10.f)))
 	{
 		m_isOverlay = false; // Can't call this in the ':' bit of the constructor for some reason...
 
@@ -20,8 +20,6 @@ namespace Screens
 		UIImage logoLeft = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::LEFT));
 		UIImage logoTopRight = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::RIGHT | UIAnchor::TOP));
 		UIImage logoBotLeftCentre = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, UIAnchor::CENTRE));
-
-		m_pButton->chooseProgrammedAnimation().setSinMovement(SinMovement(0.f, 0.f, 4.f, 3.f));
 
 		m_AllUI.push_back(std::make_shared<UIImage>(logo));
 		m_AllUI.push_back(std::make_shared<UIImage>(logoLeft));
@@ -33,34 +31,47 @@ namespace Screens
 	void MainMenu::handleEvents(const sf::Event& event)
 	{
 		if (event.type == event.KeyPressed &&
-			event.key.code == sf::Keyboard::Left)
-		{
-			SceneManager::getInstance().pushScreen(new Screens::Options(m_Window), new Transition::FadeColour());
-		}
-
-		if (event.type == event.KeyPressed &&
 			event.key.code == sf::Keyboard::Up)
 		{
 			SceneManager::getInstance().pushOverlay(new Overlays::Test(m_Window));
 		}
 
-		if (m_pButton->mouseWithinBounds(m_Window))
-		{
-			m_pButton->setTextureAnimation("Hover");
-		}
-		else
-		{
-			m_pButton->setTextureAnimation("Idle");
-		}
+		m_pButton->passEvent(event, m_Window);
 	}
 
 	void MainMenu::update(float fFrameChunk)
 	{
+		this->handleOptionsButton();
+
 		Scene::update(fFrameChunk); // Calls update on all the UI
 	}
 
 	void MainMenu::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	{
 		Scene::draw(target, states); // Calls draw on all the UI
+	}
+
+	void MainMenu::handleOptionsButton()
+	{
+		switch (m_pButton->GetState())
+		{
+		case UIButton::RELEASE:
+			m_pButton->setTextureAnimation("Idle");
+			SceneManager::getInstance().pushScreen(new Screens::Options(m_Window), new Transition::FadeColour());
+			break;
+
+		case UIButton::CLICK:
+			m_pButton->setTextureAnimation("Click");
+			break;
+
+		case UIButton::HOVER:
+			m_pButton->setTextureAnimation("Hover");
+			break;
+
+		case UIButton::IDLE:
+		default:
+			m_pButton->setTextureAnimation("Idle");
+			break;
+		}
 	}
 }
