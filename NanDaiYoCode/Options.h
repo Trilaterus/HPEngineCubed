@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "UIButton.h"
+#include "UIText.h"
 
 namespace Screens
 {
@@ -16,6 +17,7 @@ namespace Screens
 
 	private:
 		std::shared_ptr<UIButton> m_pButton;
+		std::shared_ptr<UIText> m_pButtonText;
 
 		void handleMainMenuButton();
 	};

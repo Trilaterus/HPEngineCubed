@@ -1,5 +1,10 @@
 #include "UIObject.h"
 
+UIPosition UIObject::getUIPosition() const
+{
+	return m_Position;
+}
+
 void UIObject::setOrigin(sf::Transformable* sfObject, float fWidth, float fHeight)
 {
 	// If having issues with texture rect/position being off try understanding this thread
@@ -13,6 +18,10 @@ void UIObject::setOrigin(sf::Transformable* sfObject, float fWidth, float fHeigh
 	{
 		sfObject->setOrigin(fWidth / 2.f, sfObject->getOrigin().y);
 	}
+	else // If LEFT
+	{
+		sfObject->setOrigin(0.f, sfObject->getOrigin().y);
+	}
 
 	if (m_Position.m_iOriginAnchor & 8) // If BOT
 	{
@@ -21,6 +30,10 @@ void UIObject::setOrigin(sf::Transformable* sfObject, float fWidth, float fHeigh
 	else if (!(m_Position.m_iOriginAnchor & 4)) // If !TOP (so CENTRE)
 	{
 		sfObject->setOrigin(sfObject->getOrigin().x, fHeight / 2.f);
+	}
+	else
+	{
+		sfObject->setOrigin(sfObject->getOrigin().x, 0.f);
 	}
 
 	sfObject->setOrigin(std::roundf(sfObject->getOrigin().x), std::roundf(sfObject->getOrigin().y));
@@ -39,6 +52,10 @@ void UIObject::setScreenAnchor(sf::Transformable* sfObject, const sf::RenderTarg
 	{
 		sfObject->setPosition(fWidth / 2.f, sfObject->getPosition().y);
 	}
+	else
+	{
+		sfObject->setPosition(0, sfObject->getPosition().y);
+	}
 
 	if (m_Position.m_iScreenAnchor & 8)
 	{
@@ -48,6 +65,10 @@ void UIObject::setScreenAnchor(sf::Transformable* sfObject, const sf::RenderTarg
 	{
 		sfObject->setPosition(sfObject->getPosition().x, fHeight / 2.f);
 	}
+	else
+	{
+		sfObject->setPosition(sfObject->getPosition().x, 0);
+	}
 
 	sfObject->setPosition(roundf(sfObject->getPosition().x), roundf(sfObject->getPosition().y));
 
@@ -56,7 +77,7 @@ void UIObject::setScreenAnchor(sf::Transformable* sfObject, const sf::RenderTarg
 
 void UIObject::setOffsetPosition(sf::Transformable* sfObject, float fXOffset, float fYOffset)
 {
-	sfObject->move(fXOffset, fYOffset);
+	sfObject->setPosition(roundf(m_vScreenAnchorOGPos.x + fXOffset), roundf(sfObject->getPosition().y + fYOffset));
 
 	m_vScreenAnchorOGPos = sfObject->getPosition();
 }

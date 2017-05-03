@@ -22,6 +22,8 @@ public:
 	void setTextureAnimationSpeed(int iFrameSpeed);
 	UIProgrammedAnimation& chooseProgrammedAnimation();
 
+	void setUIPosition(const UIPosition& position, const sf::RenderWindow& window);
+
 	void update(float fFrameChunk);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

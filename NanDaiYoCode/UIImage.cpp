@@ -30,6 +30,14 @@ UIProgrammedAnimation& UIImage::chooseProgrammedAnimation()
 	return m_ProgrammedAnimator;
 }
 
+void UIImage::setUIPosition(const UIPosition& position, const sf::RenderWindow& window)
+{
+	UIObject::setOrigin(&m_Sprite, m_Sprite.getGlobalBounds().width, m_Sprite.getGlobalBounds().height);
+
+	UIObject::setScreenAnchor(&m_Sprite, window);
+	UIObject::setOffsetPosition(&m_Sprite, position.m_fXOffset, position.m_fYOffset);
+}
+
 void UIImage::update(float fFrameChunk)
 {
 	m_TextureAnimator.updateFrameByTime(fFrameChunk);

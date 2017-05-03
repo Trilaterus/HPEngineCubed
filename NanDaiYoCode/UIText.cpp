@@ -21,6 +21,13 @@ void UIText::setText(const std::string& sNewText)
 	// Set origin called in alignTextVector
 }
 
+void UIText::setUIPosition(const UIPosition & position, const sf::RenderWindow & window)
+{
+	UIObject::setScreenAnchor(&m_sfTextSprite, window);
+	UIObject::setOffsetPosition(&m_sfTextSprite, position.m_fXOffset, position.m_fYOffset);
+	this->setOrigin();
+}
+
 void UIText::handleEvent()
 {
 }
@@ -190,7 +197,7 @@ void UIText::alignTextVector()
 			break;
 
 		case Alignment::CENTRE:
-			fAlignedOffset *= 1;
+			fAlignedOffset *= 1.f;
 			break;
 
 		case Alignment::RIGHT:
@@ -202,6 +209,27 @@ void UIText::alignTextVector()
 		{
 			text.move(fAlignedOffset, 0.f);
 		}
+	}
+
+	float fTotalHeight = FontManager::getInstance().getFont(m_sFontName).getLineSpacing(30) * m_AllTexts.size(); // 30 is default char size
+
+	UIObject::setOrigin(&m_sfTextSprite, fLongestLine, fTotalHeight);
+}
+
+void UIText::setOrigin()
+{
+	float fLongestLine = 0.f;
+
+	for (const std::vector<sf::Text>& vector : m_AllTexts)
+	{
+		float fLineWidth = 0.f;
+
+		for (const sf::Text& text : vector)
+		{
+			fLineWidth += text.getGlobalBounds().width;
+		}
+
+		fLongestLine = std::max(fLongestLine, fLineWidth);
 	}
 
 	float fTotalHeight = FontManager::getInstance().getFont(m_sFontName).getLineSpacing(30) * m_AllTexts.size(); // 30 is default char size

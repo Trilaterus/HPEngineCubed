@@ -14,9 +14,9 @@ int main()
 	window.setFramerateLimit(static_cast<unsigned int>(fFrameRate));
 
 	std::cout << TextureManager::getInstance().loadFromDirectory("Assets/Textures") << std::endl;
-	SceneManager::getInstance().clearAndAddScreen(new Screens::MainMenu(window));
-
 	std::cout << FontManager::getInstance().loadFromDirectory("Assets/Fonts") << std::endl;
+
+	SceneManager::getInstance().clearAndAddScreen(new Screens::MainMenu(window));
 
 	while (window.isOpen())
 	{

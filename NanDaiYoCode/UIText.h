@@ -25,6 +25,8 @@ public:
 
 	void setText(const std::string& sNewText);
 
+	void setUIPosition(const UIPosition& position, const sf::RenderWindow& window);
+
 	void handleEvent();
 	void update(float fFrameChunk);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -39,4 +41,5 @@ private:
 
 	std::vector<std::vector<sf::Text>> parseRawString(); // Takes the current raw string and updates the vector of AllTexts (with effects and positioning)
 	void alignTextVector();
+	void setOrigin(); // Set the origin of the sprite only (without moving the text)
 };

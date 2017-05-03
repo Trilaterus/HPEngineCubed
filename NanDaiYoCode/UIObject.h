@@ -19,6 +19,9 @@ public:
 	{
 	}
 
+	virtual void setUIPosition(const UIPosition& position, const sf::RenderWindow& window) = 0;
+	UIPosition getUIPosition() const;
+
 	virtual void update(float fFrameChunk) = 0;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 
