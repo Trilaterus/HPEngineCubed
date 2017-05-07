@@ -12,6 +12,13 @@ void UIObject::setOrigin(UIAnchor anchor, const sf::RenderWindow & window)
 	this->setUIPosition(m_Position, window);
 }
 
+void UIObject::setScreenAnchor(UIAnchor anchor, const sf::RenderWindow & window)
+{
+	m_Position.m_iScreenAnchor = anchor;
+
+	this->setUIPosition(m_Position, window);
+}
+
 void UIObject::setOffsetPosition(float fXOffset, float fYOffset, const sf::RenderWindow& window)
 {
 	m_Position.m_fXOffset = fXOffset;

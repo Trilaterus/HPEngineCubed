@@ -22,6 +22,7 @@ namespace Screens
 		UIImage logoBotLeftCentre = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, UIAnchor::CENTRE));
 		UIImage logoBotCentre = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::BOT));
 		logoBotCentre.setOrigin(UIAnchor::CENTRE, m_Window);
+		logoBotCentre.setScreenAnchor(UIAnchor::TOP | UIAnchor::LEFT, m_Window);
 
 		m_pButtonText->setText("Options");
 

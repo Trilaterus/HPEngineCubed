@@ -23,6 +23,7 @@ public:
 	UIPosition getUIPosition() const;
 
 	void setOrigin(UIAnchor anchor, const sf::RenderWindow& window);
+	void setScreenAnchor(UIAnchor anchor, const sf::RenderWindow& window);
 	void setOffsetPosition(float fXOffset, float fYOffset, const sf::RenderWindow& window);
 
 	virtual void update(float fFrameChunk) = 0;
