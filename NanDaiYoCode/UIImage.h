@@ -16,7 +16,7 @@ class UIImage : public UIObject
 {
 public:
 	///<summary>Creates an image at a given position with a texture</summary>
-	UIImage(const std::string& sTextureName, const sf::RenderTarget& target, UIPosition position);
+	UIImage(const std::string& sTextureName, const sf::RenderWindow& window, UIPosition position);
 
 	void setTextureAnimation(const std::string& sAnimationName);
 	void setTextureAnimationSpeed(int iFrameSpeed);

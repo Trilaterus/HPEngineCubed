@@ -21,7 +21,7 @@ public:
 		RIGHT
 	};
 
-	UIText(const std::string& sFontName, const sf::RenderTarget& target, UIPosition position, Alignment align = Alignment::LEFT);
+	UIText(const std::string& sFontName, const sf::RenderWindow& window, UIPosition position, Alignment align = Alignment::LEFT);
 
 	void setText(const std::string& sNewText);
 

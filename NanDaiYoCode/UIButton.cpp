@@ -1,8 +1,8 @@
 #include "UIButton.h"
 
-UIButton::UIButton(const std::string& sTextureName, const sf::RenderTarget& target, UIPosition position)
+UIButton::UIButton(const std::string& sTextureName, const sf::RenderWindow& window, UIPosition position)
 	:
-	UIImage(sTextureName, target, position),
+	UIImage(sTextureName, window, position),
 	m_currentState(UIButtonState::IDLE)
 {
 

@@ -3,13 +3,13 @@
 #include "FontManager.h"
 #include "StringHelper.h"
 
-UIText::UIText(const std::string& sFontName, const sf::RenderTarget& target, UIPosition position, Alignment align)
+UIText::UIText(const std::string& sFontName, const sf::RenderWindow& window, UIPosition position, Alignment align)
 	:
 	UIObject(position),
 	m_sFontName(sFontName),
 	m_Alignment(align)
 {
-	UIObject::setScreenAnchor(&m_sfTextSprite, target);
+	UIObject::setScreenAnchor(&m_sfTextSprite, window);
 	UIObject::setOffsetPosition(&m_sfTextSprite, position.m_fXOffset, position.m_fYOffset);
 }
 
@@ -21,7 +21,7 @@ void UIText::setText(const std::string& sNewText)
 	// Set origin called in alignTextVector
 }
 
-void UIText::setUIPosition(const UIPosition & position, const sf::RenderWindow & window)
+void UIText::setUIPosition(const UIPosition & position, const sf::RenderWindow& window)
 {
 	UIObject::setScreenAnchor(&m_sfTextSprite, window);
 	UIObject::setOffsetPosition(&m_sfTextSprite, position.m_fXOffset, position.m_fYOffset);

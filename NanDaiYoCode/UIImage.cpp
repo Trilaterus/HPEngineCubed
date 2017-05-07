@@ -1,7 +1,7 @@
 #include "UIImage.h"
 #include "TextureManager.h"
 
-UIImage::UIImage(const std::string& sTextureName, const sf::RenderTarget& target, UIPosition position)
+UIImage::UIImage(const std::string& sTextureName, const sf::RenderWindow& window, UIPosition position)
 	:
 	UIObject(position),
 	m_TextureAnimator(&TextureManager::getInstance().getTexture(sTextureName))
@@ -11,7 +11,7 @@ UIImage::UIImage(const std::string& sTextureName, const sf::RenderTarget& target
 
 	UIObject::setOrigin(&m_Sprite, m_Sprite.getGlobalBounds().width, m_Sprite.getGlobalBounds().height);
 
-	UIObject::setScreenAnchor(&m_Sprite, target);
+	UIObject::setScreenAnchor(&m_Sprite, window);
 	UIObject::setOffsetPosition(&m_Sprite, position.m_fXOffset, position.m_fYOffset);
 }
 

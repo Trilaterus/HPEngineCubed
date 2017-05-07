@@ -29,7 +29,6 @@ namespace Screens
 		m_AllUI.push_back(std::make_shared<UIImage>(logoBotLeftCentre));
 		m_AllUI.push_back(m_pButton);
 		m_AllUI.push_back(m_pButtonText);
-
 	}
 
 	void MainMenu::handleEvents(const sf::Event& event)
@@ -80,11 +79,11 @@ namespace Screens
 
 		if (m_pButton->GetState() == UIButton::CLICK)
 		{
-			m_pButtonText->setUIPosition(UIPosition(UIAnchor::BOT | UIAnchor::LEFT, UIAnchor::CENTRE, 100.f, -36.f), m_Window);
+			m_pButtonText->setOffsetPosition(100.f, -36.f, m_Window);
 		}
 		else
 		{
-			m_pButtonText->setUIPosition(UIPosition(UIAnchor::BOT | UIAnchor::LEFT, UIAnchor::CENTRE, 100.f, -40.f), m_Window);
+			m_pButtonText->setOffsetPosition(100.f, -40.f, m_Window);
 		}
 	}
 }

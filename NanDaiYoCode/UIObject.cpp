@@ -5,6 +5,15 @@ UIPosition UIObject::getUIPosition() const
 	return m_Position;
 }
 
+void UIObject::setOffsetPosition(float fXOffset, float fYOffset, const sf::RenderWindow& window)
+{
+	UIPosition position = this->getUIPosition();
+	position.m_fXOffset = fXOffset;
+	position.m_fYOffset = fYOffset;
+
+	this->setUIPosition(position, window);
+}
+
 void UIObject::setOrigin(sf::Transformable* sfObject, float fWidth, float fHeight)
 {
 	// If having issues with texture rect/position being off try understanding this thread
@@ -39,10 +48,10 @@ void UIObject::setOrigin(sf::Transformable* sfObject, float fWidth, float fHeigh
 	sfObject->setOrigin(std::roundf(sfObject->getOrigin().x), std::roundf(sfObject->getOrigin().y));
 }
 
-void UIObject::setScreenAnchor(sf::Transformable* sfObject, const sf::RenderTarget& target)
+void UIObject::setScreenAnchor(sf::Transformable* sfObject, const sf::RenderWindow& window)
 {
-	float fWidth = static_cast<float>(target.getSize().x);
-	float fHeight = static_cast<float>(target.getSize().y);
+	float fWidth = static_cast<float>(window.getSize().x);
+	float fHeight = static_cast<float>(window.getSize().y);
 
 	if (m_Position.m_iScreenAnchor & 2)
 	{

@@ -22,6 +22,8 @@ public:
 	virtual void setUIPosition(const UIPosition& position, const sf::RenderWindow& window) = 0;
 	UIPosition getUIPosition() const;
 
+	void setOffsetPosition(float fXOffset, float fYOffset, const sf::RenderWindow& window);
+
 	virtual void update(float fFrameChunk) = 0;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 
@@ -30,7 +32,7 @@ protected:
 	sf::Vector2f m_vScreenAnchorOGPos; // May not be accurate, ensure to update with setScreenAnchor() and/or setOffsetPosition()
 
 	void setOrigin(sf::Transformable* sfObject, float fWidth, float fHeight);
-	void setScreenAnchor(sf::Transformable* sfObject, const sf::RenderTarget& target);
+	void setScreenAnchor(sf::Transformable* sfObject, const sf::RenderWindow& window);
 	void setOffsetPosition(sf::Transformable* sfObject, float fXOffset, float fYOffset);
 
 private:

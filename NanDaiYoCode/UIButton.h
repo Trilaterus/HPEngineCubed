@@ -17,7 +17,7 @@ public:
 		RELEASE
 	};
 
-	UIButton(const std::string& sTextureName, const sf::RenderTarget& target, UIPosition position);
+	UIButton(const std::string& sTextureName, const sf::RenderWindow& window, UIPosition position);
 
 	void passEvent(const sf::Event& event, const sf::RenderWindow& window);
 	UIButtonState GetState() const;
