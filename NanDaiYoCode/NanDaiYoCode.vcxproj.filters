@@ -121,6 +121,9 @@
     <ClCompile Include="BreakLineTag.cpp">
       <Filter>UI Elements\UIText\TextTagMods</Filter>
     </ClCompile>
+    <ClCompile Include="CursorManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RandomResource.h">
@@ -215,6 +218,9 @@
     </ClInclude>
     <ClInclude Include="BreakLineTag.h">
       <Filter>UI Elements\UIText\TextTagMods</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorManager.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

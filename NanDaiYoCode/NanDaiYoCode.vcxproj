@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="BreakLineTag.cpp" />
     <ClCompile Include="ColourTagMod.cpp" />
+    <ClCompile Include="CursorManager.cpp" />
     <ClCompile Include="EndTagMod.cpp" />
     <ClCompile Include="FadeColour.cpp" />
     <ClCompile Include="FontManager.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BreakLineTag.h" />
     <ClInclude Include="ColourTagMod.h" />
+    <ClInclude Include="CursorManager.h" />
     <ClInclude Include="DirectoryNavigator.h" />
     <ClInclude Include="EndTagMod.h" />
     <ClInclude Include="FadeColour.h" />

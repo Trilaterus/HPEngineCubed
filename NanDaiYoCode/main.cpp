@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "MainMenu.h"
 #include "FontManager.h"
+#include "CursorManager.h"
 
 #include <iostream> // For testing purposes
 
@@ -15,6 +16,10 @@ int main()
 
 	std::cout << TextureManager::getInstance().loadFromDirectory("Assets/Textures") << std::endl;
 	std::cout << FontManager::getInstance().loadFromDirectory("Assets/Fonts") << std::endl;
+
+	CursorManager::getInstance().setCursorVisible(window, false);
+	CursorManager::getInstance().setCursor(UIImage("cursors", window, UIPosition(UIAnchor::TOP | UIAnchor::LEFT)));
+	CursorManager::getInstance().getCursorImage().setTextureAnimation("Pointer");
 
 	SceneManager::getInstance().clearAndAddScreen(new Screens::MainMenu(window));
 
@@ -33,11 +38,15 @@ int main()
 		{
 			float fFrameChunk = clock.restart().asSeconds();
 			SceneManager::getInstance().update(fFrameChunk);
+			CursorManager::getInstance().updateImage(fFrameChunk);
 		}
+
+		CursorManager::getInstance().updateMousePosition(window);
 
 		window.clear(sf::Color(100, 100, 100));
 
 		window.draw(SceneManager::getInstance());
+		window.draw(CursorManager::getInstance());
 
 		window.display();
 	}

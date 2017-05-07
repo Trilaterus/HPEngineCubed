@@ -15,8 +15,11 @@ public:
 	static CursorManager& getInstance();
 
 	void setCursorVisible(sf::RenderWindow& window, bool visible);
+	void setCursor(const UIImage& image);
+	UIImage& getCursorImage();
 
-	UIImage& setCursor(const UIImage& image);
+	void updateImage(float fFrameChunk);
+	void updateMousePosition(const sf::RenderWindow& window);
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -27,4 +30,6 @@ private:
 
 	bool m_bSpriteVisible;
 	std::unique_ptr<UIImage> m_pCursorSprite;
+	float m_fXOffset;
+	float m_fYOffset;
 };

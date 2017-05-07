@@ -5,6 +5,7 @@
 #include "SceneManager.h"
 #include "FadeColour.h"
 #include "TestOverlay.h"
+#include "CursorManager.h"
 
 namespace Screens
 {
@@ -91,6 +92,15 @@ namespace Screens
 		else
 		{
 			m_pButtonText->setOffsetPosition(-105.f, -40.f, m_Window);
+		}
+
+		if (m_pButton->GetState() != UIButton::IDLE)
+		{
+			CursorManager::getInstance().getCursorImage().setTextureAnimation("Hand");
+		}
+		else
+		{
+			CursorManager::getInstance().getCursorImage().setTextureAnimation("Pointer");
 		}
 	}
 }
