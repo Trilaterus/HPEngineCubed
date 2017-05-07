@@ -86,11 +86,11 @@ namespace Screens
 
 		if (m_pButton->GetState() == UIButton::CLICK)
 		{
-			m_pButtonText->setUIPosition(UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, UIAnchor::CENTRE, -105.f, -36.f), m_Window);
+			m_pButtonText->setOffsetPosition(-105.f, -36.f, m_Window);
 		}
 		else
 		{
-			m_pButtonText->setUIPosition(UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, UIAnchor::CENTRE, -105.f, -40.f), m_Window);
+			m_pButtonText->setOffsetPosition(-105.f, -40.f, m_Window);
 		}
 	}
 }

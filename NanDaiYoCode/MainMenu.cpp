@@ -20,6 +20,8 @@ namespace Screens
 		UIImage logoLeft = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::LEFT));
 		UIImage logoTopRight = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::RIGHT | UIAnchor::TOP));
 		UIImage logoBotLeftCentre = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::BOT | UIAnchor::RIGHT, UIAnchor::CENTRE));
+		UIImage logoBotCentre = UIImage("logo_shadow", m_Window, UIPosition(UIAnchor::BOT));
+		logoBotCentre.setOrigin(UIAnchor::CENTRE, m_Window);
 
 		m_pButtonText->setText("Options");
 
@@ -27,6 +29,7 @@ namespace Screens
 		m_AllUI.push_back(std::make_shared<UIImage>(logoLeft));
 		m_AllUI.push_back(std::make_shared<UIImage>(logoTopRight));
 		m_AllUI.push_back(std::make_shared<UIImage>(logoBotLeftCentre));
+		m_AllUI.push_back(std::make_shared<UIImage>(logoBotCentre));
 		m_AllUI.push_back(m_pButton);
 		m_AllUI.push_back(m_pButtonText);
 	}

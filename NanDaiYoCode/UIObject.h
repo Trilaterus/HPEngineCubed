@@ -22,6 +22,7 @@ public:
 	virtual void setUIPosition(const UIPosition& position, const sf::RenderWindow& window) = 0;
 	UIPosition getUIPosition() const;
 
+	void setOrigin(UIAnchor anchor, const sf::RenderWindow& window);
 	void setOffsetPosition(float fXOffset, float fYOffset, const sf::RenderWindow& window);
 
 	virtual void update(float fFrameChunk) = 0;

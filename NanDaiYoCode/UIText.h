@@ -41,5 +41,5 @@ private:
 
 	std::vector<std::vector<sf::Text>> parseRawString(); // Takes the current raw string and updates the vector of AllTexts (with effects and positioning)
 	void alignTextVector();
-	void setOrigin(); // Set the origin of the sprite only (without moving the text)
+	void setupOrigin(); // Set the origin of the sprite only (without moving the text)
 };

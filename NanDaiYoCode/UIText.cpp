@@ -25,7 +25,7 @@ void UIText::setUIPosition(const UIPosition & position, const sf::RenderWindow& 
 {
 	UIObject::setScreenAnchor(&m_sfTextSprite, window);
 	UIObject::setOffsetPosition(&m_sfTextSprite, position.m_fXOffset, position.m_fYOffset);
-	this->setOrigin();
+	this->setupOrigin();
 }
 
 void UIText::handleEvent()
@@ -216,7 +216,7 @@ void UIText::alignTextVector()
 	UIObject::setOrigin(&m_sfTextSprite, fLongestLine, fTotalHeight);
 }
 
-void UIText::setOrigin()
+void UIText::setupOrigin()
 {
 	float fLongestLine = 0.f;
 
