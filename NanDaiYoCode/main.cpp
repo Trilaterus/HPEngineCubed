@@ -3,6 +3,7 @@
 #include "MainMenu.h"
 #include "FontManager.h"
 #include "CursorManager.h"
+#include "AudioManager.h"
 
 #include <iostream> // For testing purposes
 
@@ -16,6 +17,8 @@ int main()
 
 	std::cout << TextureManager::getInstance().loadFromDirectory("Assets/Textures") << std::endl;
 	std::cout << FontManager::getInstance().loadFromDirectory("Assets/Fonts") << std::endl;
+	std::cout << AudioManager::getInstance().loadMusicFromDirectory("Assets/Music") << std::endl;
+	std::cout << AudioManager::getInstance().loadSFXFromDirectory("Assets/SFX") << std::endl;
 
 	CursorManager::getInstance().setCursorVisible(window, false);
 	CursorManager::getInstance().setCursor(UIImage("cursors", window, UIPosition(UIAnchor::TOP | UIAnchor::LEFT)));

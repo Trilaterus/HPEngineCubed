@@ -17,7 +17,7 @@ int FontManager::loadFromDirectory(const std::string& sFolderPath)
 {
 	std::vector<std::string> vFileNames = DirectoryNavigator::getFilesFromDirectory(sFolderPath);
 	
-	for (std::string sFileName : vFileNames)
+	for (const std::string& sFileName : vFileNames)
 	{
 		int iDelimeterLocation = sFileName.find_first_of('.');
 		std::string sPureName = sFileName.substr(0, iDelimeterLocation);

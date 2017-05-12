@@ -124,6 +124,9 @@
     <ClCompile Include="CursorManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RandomResource.h">
