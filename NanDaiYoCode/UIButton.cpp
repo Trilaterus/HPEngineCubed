@@ -39,7 +39,12 @@ void UIButton::passEvent(const sf::Event & event, const sf::RenderWindow & windo
 	}
 }
 
-UIButton::UIButtonState UIButton::GetState() const
+void UIButton::setState(UIButtonState state)
+{
+	m_currentState = state;
+}
+
+UIButton::UIButtonState UIButton::getState() const
 {
 	return m_currentState;
 }

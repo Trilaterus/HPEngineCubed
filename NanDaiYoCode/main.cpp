@@ -42,6 +42,7 @@ int main()
 			float fFrameChunk = clock.restart().asSeconds();
 			SceneManager::getInstance().update(fFrameChunk);
 			CursorManager::getInstance().updateImage(fFrameChunk);
+			AudioManager::getInstance().clearStoppedSFX();
 		}
 
 		CursorManager::getInstance().updateMousePosition(window);

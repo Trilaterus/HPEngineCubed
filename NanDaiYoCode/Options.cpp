@@ -64,7 +64,7 @@ namespace Screens
 
 	void Options::handleMainMenuButton()
 	{
-		switch (m_pButton->GetState())
+		switch (m_pButton->getState())
 		{
 		case UIButton::RELEASE:
 			m_pButton->setTextureAnimation("Idle");
@@ -85,7 +85,7 @@ namespace Screens
 			break;
 		}
 
-		if (m_pButton->GetState() == UIButton::CLICK)
+		if (m_pButton->getState() == UIButton::CLICK)
 		{
 			m_pButtonText->setOffsetPosition(-105.f, -36.f, m_Window);
 		}
@@ -94,7 +94,7 @@ namespace Screens
 			m_pButtonText->setOffsetPosition(-105.f, -40.f, m_Window);
 		}
 
-		if (m_pButton->GetState() != UIButton::IDLE)
+		if (m_pButton->getState() != UIButton::IDLE)
 		{
 			CursorManager::getInstance().getCursorImage().setTextureAnimation("Hand");
 		}

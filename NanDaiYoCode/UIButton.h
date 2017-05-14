@@ -20,7 +20,8 @@ public:
 	UIButton(const std::string& sTextureName, const sf::RenderWindow& window, UIPosition position);
 
 	void passEvent(const sf::Event& event, const sf::RenderWindow& window);
-	UIButtonState GetState() const;
+	void setState(UIButtonState state);
+	UIButtonState getState() const;
 
 	void update(float fFrameChunk);
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;

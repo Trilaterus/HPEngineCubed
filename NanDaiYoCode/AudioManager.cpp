@@ -5,6 +5,17 @@
 #include <map>
 #include <assert.h>
 
+namespace
+{
+	struct predicate // Not sure of a better name...
+	{
+		bool operator()(const std::shared_ptr<sf::Sound>& pSound) const
+		{
+			return pSound->getStatus() == sf::Sound::Stopped;
+		}
+	};
+}
+
 AudioManager::AudioManager()
 {
 }
@@ -58,4 +69,20 @@ int AudioManager::loadMusicFromDirectory(const std::string& sFolderPath)
 	}
 
 	return m_AllMusic.size();
+}
+
+void AudioManager::playSFX(const std::string& sSFXName)
+{
+	assert(m_AllSFX.find(sSFXName) != m_AllSFX.end());
+
+	std::shared_ptr<sf::Sound> pSound = std::shared_ptr<sf::Sound>(new sf::Sound(m_AllSFX.at(sSFXName)));
+	pSound->play();
+	m_AllSounds.push_back(pSound);
+}
+
+void AudioManager::clearStoppedSFX()
+{
+	// Deletion concept taken from http://stackoverflow.com/a/3938847
+	std::vector<std::shared_ptr<sf::Sound>>::iterator it = std::remove_if(m_AllSounds.begin(), m_AllSounds.end(), predicate());
+	m_AllSounds.erase(it, m_AllSounds.end());
 }

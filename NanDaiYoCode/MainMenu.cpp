@@ -6,6 +6,7 @@
 #include "FadeColour.h"
 #include "TestOverlay.h"
 #include "CursorManager.h"
+#include "AudioManager.h"
 
 namespace Screens
 {
@@ -61,11 +62,13 @@ namespace Screens
 
 	void MainMenu::handleOptionsButton()
 	{
-		switch (m_pButton->GetState())
+		switch (m_pButton->getState())
 		{
 		case UIButton::RELEASE:
 			m_pButton->setTextureAnimation("Idle");
+			AudioManager::getInstance().playSFX("WinJingleSuper");
 			SceneManager::getInstance().pushScreen(new Screens::Options(m_Window), new Transition::FadeColour());
+			m_pButton->setState(UIButton::IDLE);
 			break;
 
 		case UIButton::CLICK:
@@ -82,7 +85,7 @@ namespace Screens
 			break;
 		}
 
-		if (m_pButton->GetState() == UIButton::CLICK)
+		if (m_pButton->getState() == UIButton::CLICK)
 		{
 			m_pButtonText->setOffsetPosition(100.f, -36.f, m_Window);
 		}
@@ -91,7 +94,7 @@ namespace Screens
 			m_pButtonText->setOffsetPosition(100.f, -40.f, m_Window);
 		}
 
-		if (m_pButton->GetState() != UIButton::IDLE)
+		if (m_pButton->getState() != UIButton::IDLE)
 		{
 			CursorManager::getInstance().getCursorImage().setTextureAnimation("Hand");
 		}

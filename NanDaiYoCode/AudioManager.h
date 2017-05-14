@@ -18,6 +18,10 @@ public:
 	int loadSFXFromDirectory(const std::string& sFolderPath);
 	int loadMusicFromDirectory(const std::string& sFolderPath);
 
+	void playSFX(const std::string& sSFXName);
+
+	void clearStoppedSFX();
+
 private:
 	AudioManager();
 	AudioManager(AudioManager const&);
@@ -25,5 +29,5 @@ private:
 
 	std::unordered_map<std::string, std::unique_ptr<sf::Music>> m_AllMusic;
 	std::unordered_map<std::string, sf::SoundBuffer> m_AllSFX;
-
+	std::vector<std::shared_ptr<sf::Sound>> m_AllSounds;
 };
