@@ -45,6 +45,11 @@ namespace Screens
 			SceneManager::getInstance().pushOverlay(new Overlays::Test(m_Window));
 		}
 
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			//AudioManager::getInstance().toggleMusic("Rain", true);
+		}
+
 		m_pButton->passEvent(event, m_Window);
 	}
 
@@ -66,7 +71,6 @@ namespace Screens
 		{
 		case UIButton::RELEASE:
 			m_pButton->setTextureAnimation("Idle");
-			AudioManager::getInstance().playSFX("WinJingleSuper");
 			SceneManager::getInstance().pushScreen(new Screens::Options(m_Window), new Transition::FadeColour());
 			m_pButton->setState(UIButton::IDLE);
 			break;

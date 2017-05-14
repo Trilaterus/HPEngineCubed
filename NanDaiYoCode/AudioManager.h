@@ -19,6 +19,9 @@ public:
 	int loadMusicFromDirectory(const std::string& sFolderPath);
 
 	void playSFX(const std::string& sSFXName);
+	void playMusic(const std::string& sMusicName);
+	void pauseMusic(const std::string& sMusicName, bool bRestart = false);
+	void toggleMusic(const std::string& sMusicName, bool bRestart = false);
 
 	void clearStoppedSFX();
 

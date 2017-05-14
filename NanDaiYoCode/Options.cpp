@@ -6,6 +6,7 @@
 #include "FadeColour.h"
 #include "TestOverlay.h"
 #include "CursorManager.h"
+#include "AudioManager.h"
 
 namespace Screens
 {
@@ -68,6 +69,8 @@ namespace Screens
 		{
 		case UIButton::RELEASE:
 			m_pButton->setTextureAnimation("Idle");
+			m_pButton->setState(UIButton::IDLE);
+			AudioManager::getInstance().playSFX("WinJingleSuper");
 			SceneManager::getInstance().pushScreen(new Screens::MainMenu(m_Window), new Transition::FadeColour());
 			break;
 
